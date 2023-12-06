@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 68b41c53f825e4b56b206eb2baf5c7f4
+timeCreated: 1474880642
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Animation/Priest/walk.anim
+  uploadId: 202860

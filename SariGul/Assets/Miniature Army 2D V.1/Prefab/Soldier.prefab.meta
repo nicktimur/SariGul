@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 315058484cf2044ce8dcb608b4678ff6
+timeCreated: 1475410414
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Prefab/Soldier.prefab
+  uploadId: 202860

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f58d14df53af01b41baf870ccd598657
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157405
+  packageName: Slime Character
+  packageVersion: 1.0
+  assetPath: Assets/Slime/Demo/Spin01.controller
+  uploadId: 338132

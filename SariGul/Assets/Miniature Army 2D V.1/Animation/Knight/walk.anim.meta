@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2fb0aa72589c1415e962dfadbe7b4e92
+timeCreated: 1475212286
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Animation/Knight/walk.anim
+  uploadId: 202860

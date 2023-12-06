@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 87377b1654e17472996d7f9432ad5060
+timeCreated: 1475306863
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Animation/Thief/attack.anim
+  uploadId: 202860

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6bced8ae578df4db6bd5b1a523944f7d
+timeCreated: 1475306816
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Animation/Thief.controller
+  uploadId: 202860

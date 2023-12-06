@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 21571d5d9af36c04daddc532baeb37fb
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157405
+  packageName: Slime Character
+  packageVersion: 1.0
+  assetPath: Assets/Slime/Prefab/Idle01.prefab
+  uploadId: 338132

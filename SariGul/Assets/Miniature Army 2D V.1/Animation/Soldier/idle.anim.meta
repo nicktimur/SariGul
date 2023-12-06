@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3e0e9de794fe543c7a5a26b5d3cbe3ff
+timeCreated: 1475128371
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Animation/Soldier/idle.anim
+  uploadId: 202860

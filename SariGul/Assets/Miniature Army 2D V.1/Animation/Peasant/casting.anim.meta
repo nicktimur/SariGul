@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cae7b1ccf658b4c99b4e5ec4eb041f1b
+timeCreated: 1475040077
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Animation/Peasant/casting.anim
+  uploadId: 202860

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 13c470c5b8dcd4854834911f7e0a9a6c
+timeCreated: 1475410423
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Prefab/Thief.prefab
+  uploadId: 202860

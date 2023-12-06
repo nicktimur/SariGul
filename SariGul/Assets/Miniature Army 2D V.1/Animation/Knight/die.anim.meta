@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2839325d6eb674a85a21e24b21db15d8
+timeCreated: 1475212311
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Animation/Knight/die.anim
+  uploadId: 202860

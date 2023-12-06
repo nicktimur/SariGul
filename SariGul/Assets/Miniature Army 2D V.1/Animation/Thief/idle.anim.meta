@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6bdf88c984ac24e3abf7d1218d46ab1e
+timeCreated: 1475306843
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Animation/Thief/idle.anim
+  uploadId: 202860

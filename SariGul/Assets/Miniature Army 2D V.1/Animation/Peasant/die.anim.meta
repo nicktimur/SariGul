@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ff89252f0b0a74b8db908dc76557a804
+timeCreated: 1475040094
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Animation/Peasant/die.anim
+  uploadId: 202860

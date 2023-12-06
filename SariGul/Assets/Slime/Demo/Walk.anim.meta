@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 129c43d935ccf154dae526f2e09f887f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157405
+  packageName: Slime Character
+  packageVersion: 1.0
+  assetPath: Assets/Slime/Demo/Walk.anim
+  uploadId: 338132

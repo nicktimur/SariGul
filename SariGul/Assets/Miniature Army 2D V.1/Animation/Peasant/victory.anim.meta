@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b1fbfb2e46f5647b2b8caf9c4c98a346
+timeCreated: 1475040101
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Animation/Peasant/victory.anim
+  uploadId: 202860

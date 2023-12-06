@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 64bf9b97fc260504c85e146b4f3241ac
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157405
+  packageName: Slime Character
+  packageVersion: 1.0
+  assetPath: Assets/Slime/Demo/Jump.anim
+  uploadId: 338132

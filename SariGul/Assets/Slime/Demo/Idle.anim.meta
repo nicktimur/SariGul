@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 88ba0f7c9ada19841973777d96584544
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157405
+  packageName: Slime Character
+  packageVersion: 1.0
+  assetPath: Assets/Slime/Demo/Idle.anim
+  uploadId: 338132

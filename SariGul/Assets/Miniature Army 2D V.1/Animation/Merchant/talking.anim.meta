@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 10c9ec7f8e4054b5faf92f2be478dea5
+timeCreated: 1475316983
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Animation/Merchant/talking.anim
+  uploadId: 202860

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2deec9488aaac47ad9c09eed3aed072e
+timeCreated: 1475210779
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Animation/Knight/Knight.controller
+  uploadId: 202860

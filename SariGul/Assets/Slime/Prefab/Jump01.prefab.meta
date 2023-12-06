@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ee05887a567e285408a792162d30e47e
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157405
+  packageName: Slime Character
+  packageVersion: 1.0
+  assetPath: Assets/Slime/Prefab/Jump01.prefab
+  uploadId: 338132

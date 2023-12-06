@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fee0eb169d7d14a40930edb8f1faadea
+timeCreated: 1475316969
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Animation/Merchant/walk.anim
+  uploadId: 202860

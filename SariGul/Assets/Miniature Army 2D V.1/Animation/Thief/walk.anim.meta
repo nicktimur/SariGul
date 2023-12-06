@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6c9334ee14b0b453c99bfb3ea4c878de
+timeCreated: 1475306850
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Animation/Thief/walk.anim
+  uploadId: 202860

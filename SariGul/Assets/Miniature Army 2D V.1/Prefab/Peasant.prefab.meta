@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a3c1faf915dc240bca8ed7566d46910c
+timeCreated: 1475410440
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Prefab/Peasant.prefab
+  uploadId: 202860

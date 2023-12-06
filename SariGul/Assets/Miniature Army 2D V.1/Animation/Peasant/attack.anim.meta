@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 42e1d7a1fa04b42afae61f8f69e58bb5
+timeCreated: 1475040082
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Animation/Peasant/attack.anim
+  uploadId: 202860

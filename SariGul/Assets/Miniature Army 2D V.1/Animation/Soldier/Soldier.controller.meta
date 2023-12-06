@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 68390ae397b19423bb4f001c97122826
+timeCreated: 1475128371
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Animation/Soldier/Soldier.controller
+  uploadId: 202860

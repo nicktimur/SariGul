@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9be21d0cc76a54cb3b1d888b51070247
+timeCreated: 1474880373
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Animation/Priest/Priest.controller
+  uploadId: 202860

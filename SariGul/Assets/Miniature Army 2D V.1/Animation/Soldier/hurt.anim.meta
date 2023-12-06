@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ec2f908d5fa63443ba23d9a0d152c3f1
+timeCreated: 1475128398
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Animation/Soldier/hurt.anim
+  uploadId: 202860
