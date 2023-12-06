@@ -7,17 +7,24 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     Animator animator;
     public StaminaBar staminaBar;
+    public HealthBar healthBar;
+
     public float horizontal;
     public float speed;
     bool jump = true;
     public float jumpForce;
     public float downPower;
-    bool isRunning = false;
+
     bool lookingRight = true;
     bool isJumping = false;
+
     bool noStamina = false;
     public float maxStamina = 100;
     public float stamina;
+
+    public int maxHealth = 100;
+    public int health;
+
     private float jumpTimer = 0f;
     Vector3 scale;
     void Start()
@@ -25,6 +32,7 @@ public class Player : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
         staminaBar.setMaxStamina(maxStamina);
+        healthBar.setMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -47,7 +55,6 @@ public class Player : MonoBehaviour
         {
             if(Mathf.Abs(horizontal) > 0.1 )
             {
-                isRunning = true;
                 animator.SetBool("isRunning", true);
                 speed = 250;
                 stamina -= 12 * Time.deltaTime;
@@ -57,7 +64,6 @@ public class Player : MonoBehaviour
         }
         else
         {
-            isRunning = false;
             animator.SetBool("isRunning", false);
             speed = 125;
 
