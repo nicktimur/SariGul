@@ -6,10 +6,10 @@ WHERE IS HE???
 - [x] Yer çekimi ve zemini ayarlama
 - [x] Karakteri takip eden kamera
 - [x] Koşma animasyonu ve shift tuşuna atama
-- [ ] Karakteri daha akıcı takip eden kamera
+- [x] Karakteri daha akıcı takip eden kamera
 - [x] Can barı
 - [x] Stamina barı
-- [ ] Takılma ve zıplama animasyonunun sorununun çözülmesi
+- [x] Takılma ve zıplama animasyonunun sorununun çözülmesi
 - [ ] Hasar alan düşmanlar ve çeşitlilik
 - [ ] Saldırı ve hasar animasyonlarının ayarlanması 
 - [ ] Giriş bölümünün yapılışı
