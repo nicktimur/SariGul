@@ -64,27 +64,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            animator.SetBool("isRunning", false);
-            speed = 125;
-
-            if (stamina < 100)
-            {
-                stamina += 10 * Time.deltaTime;
-                staminaBar.setStamina(stamina);
-                if (stamina > 10)
-                {
-                    noStamina = false;
-                }
-                else
-                {
-                    noStamina = true;
-                }
-            }
-            else
-            {
-                stamina = 100;
-                staminaBar.setStamina(stamina);
-            }
+            RegenerateStamina();
         }
 
 
@@ -153,6 +133,31 @@ public class Player : MonoBehaviour
             jump = false;
         }
 
+    }
+
+    private void RegenerateStamina() {
+
+        animator.SetBool("isRunning", false);
+        speed = 125;
+
+        if (stamina < 100)
+        {
+            stamina += 10 * Time.deltaTime;
+            staminaBar.setStamina(stamina);
+            if (stamina > 10)
+            {
+                noStamina = false;
+            }
+            else
+            {
+                noStamina = true;
+            }
+        }
+        else
+        {
+            stamina = 100;
+            staminaBar.setStamina(stamina);
+        }
     }
 
 }
