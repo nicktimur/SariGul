@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
 
     public int maxHealth = 100;
     public int health;
+    public bool isDead = false;
 
     private float jumpTimer = 0f;
     Vector3 scale;
@@ -95,6 +96,7 @@ public class Player : MonoBehaviour
 
     void FlipCharacter()
     {
+        
         lookingRight = !lookingRight;
         scale = gameObject.transform.localScale;
         scale.x *= -1;
@@ -107,12 +109,12 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector3(horizontal * Time.deltaTime * speed, rb.velocity.y, 0);
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
-        if(horizontal > 0 && lookingRight == false)
+        if(!isDead && horizontal > 0 && lookingRight == false)
         {
             FlipCharacter();
         }
 
-        if (horizontal < 0 && lookingRight == true)
+        if (!isDead && horizontal < 0 && lookingRight == true)
         {
             FlipCharacter();
         }
