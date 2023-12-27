@@ -6,23 +6,31 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Saldýrý Parametreleri")]
     public int damage;
     [SerializeField] private float attackCooldown;
     [SerializeField] private float range;
+
+    [Header("Collider Parametreleri")]
     [SerializeField] private float colliderDistance;
-    private float cooldownTimer = Mathf.Infinity;
     [SerializeField] private CapsuleCollider2D boxCollider;
-    public LayerMask playerLayer;
+
+    [Header("Player Layer")]
+    private float cooldownTimer = Mathf.Infinity;
+    [SerializeField] public LayerMask playerLayer;
     public int maxHealth = 100;
     int currentHealth;
     public Animator anime;
     public HealthBar healthBar;
     public PlayerCombat playerCombat;
+    public Player player;
+    private EnemyPatrol enemyPatrol;
 
 
     private void Awake()
     {
         anime = GetComponent<Animator>();
+        enemyPatrol = GetComponentInParent<EnemyPatrol>();
     }
 
     // Start is called before the first frame update
@@ -35,11 +43,21 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         cooldownTimer += Time.deltaTime;
-        if(PlayerInSight() && cooldownTimer >= attackCooldown)
+        if(!player.isDead && PlayerInSight() && cooldownTimer >= attackCooldown)
         {
             //Attack
             cooldownTimer = 0;
             anime.SetTrigger("Attack");
+        }
+
+        if(enemyPatrol != null)
+        {
+            enemyPatrol.enabled = !PlayerInSight();
+        }
+
+        if (player.isDead)
+        {
+            anime.SetBool("PlayerDead", true);
         }
     }
 

@@ -58,6 +58,7 @@ public class PlayerCombat : MonoBehaviour
     void KillPlayer()
     {
         anime.SetBool("Died", true);
+        player.isDead = true;
 
         this.enabled = false;
         GetComponent<Collider2D>().enabled = false;
