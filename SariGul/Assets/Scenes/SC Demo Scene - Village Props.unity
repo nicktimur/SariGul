@@ -13290,31 +13290,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000013296727282, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
   m_PrefabInstance: {fileID: 1696626608}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &702305252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 702305250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e505940c5d9d2645b344ee8aa413e78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 50
-  attackCooldown: 0.3
-  range: 3
-  colliderDistance: 0.18
-  boxCollider: {fileID: 702305253}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  maxHealth: 100
-  anime: {fileID: 702305255}
-  healthBar: {fileID: 1305188019}
-  playerCombat: {fileID: 88496246}
-  player: {fileID: 88496247}
 --- !u!70 &702305253
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -13384,6 +13359,33 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 95000010463452298, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
   m_PrefabInstance: {fileID: 1696626608}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &702305256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702305250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09697670d88d3934d8966c1966ecc39d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  attackCooldown: 2
+  range: 14
+  firepoint: {fileID: 0}
+  fireballs: []
+  colliderDistance: 0.3
+  boxCollider: {fileID: 702305253}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  maxHealth: 100
+  anime: {fileID: 702305255}
+  healthBar: {fileID: 758796055}
+  playerCombat: {fileID: 88496246}
+  player: {fileID: 88496247}
 --- !u!1001 &709233573
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18371,7 +18373,7 @@ Transform:
   m_GameObject: {fileID: 1144777121}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -71.71, y: 6.95, z: 0.050652128}
+  m_LocalPosition: {x: -59.47, y: 1.97, z: 0.050652128}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24524,7 +24526,7 @@ Transform:
   m_GameObject: {fileID: 1521493738}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -71.71, y: 6.95, z: 0.050652128}
+  m_LocalPosition: {x: -80.43, y: 6.95, z: 0.050652128}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -26441,7 +26443,7 @@ PrefabInstance:
       addedObject: {fileID: 702305253}
     - targetCorrespondingSourceObject: {fileID: 1000013034572668, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 702305252}
+      addedObject: {fileID: 702305256}
   m_SourcePrefab: {fileID: 100100000, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
 --- !u!1001 &1700398683
 PrefabInstance:
