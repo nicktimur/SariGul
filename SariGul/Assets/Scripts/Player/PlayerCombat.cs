@@ -16,6 +16,7 @@ public class PlayerCombat : MonoBehaviour
     float nextAttackTime = 0f;
     public Player player;
     public StaminaBar staminaBar;
+    public HealthBar healthBar;
 
     // Update is called once per frame
     void Update()
@@ -43,9 +44,11 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         player.health -= damage;
+        anime.SetTrigger("Hurt");
+        healthBar.setHealth(player.health);
         if(player.health <= 0)
         {
             KillPlayer();
@@ -54,7 +57,11 @@ public class PlayerCombat : MonoBehaviour
 
     void KillPlayer()
     {
-        Destroy(player);
+        anime.SetBool("Died", true);
+
+        this.enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
     }
 
     void OnDrawGizmosSelected()

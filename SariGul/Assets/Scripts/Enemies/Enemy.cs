@@ -12,11 +12,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float colliderDistance;
     private float cooldownTimer = Mathf.Infinity;
     [SerializeField] private CapsuleCollider2D boxCollider;
-    [SerializeField] private LayerMask playerLayer;
+    public LayerMask playerLayer;
     public int maxHealth = 100;
     int currentHealth;
     public Animator anime;
     public HealthBar healthBar;
+    public PlayerCombat playerCombat;
 
 
     private void Awake()
@@ -34,39 +35,43 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         cooldownTimer += Time.deltaTime;
-        Debug.Log(PlayerInSight());
         if(PlayerInSight() && cooldownTimer >= attackCooldown)
         {
             //Attack
             cooldownTimer = 0;
             anime.SetTrigger("Attack");
-            Debug.Log("Saldýrýldý");
         }
     }
 
     private bool PlayerInSight()
     {
-        Vector2 origin = boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance;
-        Vector2 size = new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z);
-        RaycastHit2D hit = Physics2D.BoxCast(origin, size, 0, Vector2.left, 0, playerLayer);
+        RaycastHit2D hit =
+            Physics2D.BoxCast(boxCollider.bounds.center + transform.right * range * -transform.localScale.x * colliderDistance,
+            new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
+            0, Vector2.left, 0, playerLayer);
+
+
         return hit.collider != null;
     }
-
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
-        Vector2 origin = boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance;
-        Vector2 size = new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(origin, size);
+        Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * range * -transform.localScale.x * colliderDistance,
+            new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
+    }
+
+    private void DamagePlayer()
+    {
+        if (PlayerInSight())
+        {
+            playerCombat.TakeDamage(damage);
+        }
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.setHealth(currentHealth);
-
-
-
         anime.SetTrigger("Hurt");
 
         if(currentHealth <= 0)
@@ -82,7 +87,7 @@ public class Enemy : MonoBehaviour
         this.enabled = false;
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-        GameObject.Find("Soldier/Canvas Enemy").GetComponent<CanvasGroup>().alpha = 0;
+        GameObject.Find("Enemy Soldier/Canvas Enemy").GetComponent<CanvasGroup>().alpha = 0;
 
 
     }
