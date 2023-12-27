@@ -43,6 +43,20 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    void TakeDamage(int damage)
+    {
+        player.health -= damage;
+        if(player.health <= 0)
+        {
+            KillPlayer();
+        }
+    }
+
+    void KillPlayer()
+    {
+        Destroy(player);
+    }
+
     void OnDrawGizmosSelected()
     {
         if (AttackPoint == null)
