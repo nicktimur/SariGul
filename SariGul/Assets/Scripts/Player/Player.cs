@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
-    private float wallJumpCooldown;
 
     public float horizontal;
     public float speed;
@@ -70,30 +69,27 @@ public class Player : MonoBehaviour
             animator.SetBool("isJumping", false);
         }
 
-        if(wallJumpCooldown > 0.2f)
+        //Zýplama
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            rb.velocity = new Vector2(Input.GetAxis("Horizontal") * jumpForce, rb.velocity.y);
+            Jump();
+        }
 
-            if (Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                Jump();
-            }
+        //Ayarlanabilir Zýplama Yüksekliði
+        if(Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0|| Input.GetKeyUp(KeyCode.UpArrow) && rb.velocity.y > 0)
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
 
-            if(onWall() && !isGrounded())
-            {
-                rb.gravityScale = 0;
-                rb.velocity = Vector2.zero;
-            }
-            else
-            {
-                rb.gravityScale = 3;
-
-            }
+        if (onWall())
+        {
+            rb.gravityScale = 0;
+            rb.velocity = Vector2.zero;
         }
         else
         {
-            wallJumpCooldown += Time.deltaTime;
+            rb.gravityScale = 3;
+            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
         }
+
     }
 
     private void Jump()
@@ -105,7 +101,6 @@ public class Player : MonoBehaviour
         }
         else if (onWall() && !isGrounded())
         {
-            wallJumpCooldown = 0;
             rb.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * walljumpForce, walljumpForce);
             animator.SetBool("isJumping", true);
         }
