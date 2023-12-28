@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class EnemyProjectile : EnemyDamage
+public class EnemyProjectile : MonoBehaviour
 {
+    public string rangeType;
     [SerializeField] private float speed;
     [SerializeField] private float resetTime;
     private float lifetime;
     private Animator anim;
     private BoxCollider2D coll;
+    public PlayerCombat playerCombat;
+    [SerializeField] private Enemy enemy;
 
     private bool hit;
 
@@ -37,7 +40,7 @@ public class EnemyProjectile : EnemyDamage
     private void OnTriggerEnter2D(Collider2D collision)
     {
         hit = true;
-        base.OnTriggerEnter2D(collision); //Execute logic from parent script first
+        Boom(collision, enemy.damage); //Execute logic from parent script first
         coll.enabled = false;
 
         if (anim != null)
@@ -45,6 +48,15 @@ public class EnemyProjectile : EnemyDamage
         else
             gameObject.SetActive(false); //When this hits any object deactivate arrow
     }
+
+    protected void Boom(Collider2D collision, int damage)
+    {
+        if (collision.tag == "Player" && rangeType == "dmg")
+            playerCombat.TakeDamage(damage);
+        else if (collision.tag == "Player" && rangeType == "ptn")
+            playerCombat.TakeStaminaDamage(damage);
+    }
+
     private void Deactivate()
     {
         gameObject.SetActive(false);

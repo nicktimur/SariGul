@@ -8,15 +8,18 @@ public class Player : MonoBehaviour
     Animator animator;
     public StaminaBar staminaBar;
     public HealthBar healthBar;
+    [SerializeField] private BoxCollider2D boxCollider;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask wallLayer;
+    private float wallJumpCooldown;
 
     public float horizontal;
     public float speed;
-    bool jump = true;
     public float jumpForce;
+    public float walljumpForce;
     public float downPower;
 
     bool lookingRight = true;
-    bool isJumping = false;
 
     bool noStamina = false;
     public float maxStamina = 100;
@@ -25,9 +28,9 @@ public class Player : MonoBehaviour
     public int maxHealth = 100;
     public int health;
     public bool isDead = false;
-
-    private float jumpTimer = 0f;
     Vector3 scale;
+
+
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -39,20 +42,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && jump == true || Input.GetKeyDown(KeyCode.UpArrow) && jump == true)
-        {
-            rb.AddForce(new Vector2(0, jumpForce));
-            jump = false;
-        }
-
-        if (Input.GetKeyDown(KeyCode.S) && jump == false || Input.GetKeyDown(KeyCode.DownArrow) && jump == false)
+        if (Input.GetKeyDown(KeyCode.S) && !isGrounded() || Input.GetKeyDown(KeyCode.DownArrow) && !isGrounded())
         {
             Vector3 vel = rb.velocity;
             vel.y -= downPower;
             rb.velocity = vel;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) && stamina > 0 && !noStamina && jump)
+        if (Input.GetKey(KeyCode.LeftShift) && stamina > 0 && !noStamina && isGrounded())
         {
             if(Mathf.Abs(horizontal) > 0.1 )
             {
@@ -68,30 +65,50 @@ public class Player : MonoBehaviour
             RegenerateStamina();
         }
 
-
-        if (jump == false)
+        if (isGrounded())
         {
-            isJumping = true;
-        }
-        else if (jump == true)
-        {
-            isJumping = false;
             animator.SetBool("isJumping", false);
         }
 
-        if (isJumping)
+        if(wallJumpCooldown > 0.2f)
         {
-            jumpTimer += Time.deltaTime;
+            rb.velocity = new Vector2(Input.GetAxis("Horizontal") * jumpForce, rb.velocity.y);
 
-            // Eðer 0.1 saniyeden fazla süre boyunca isJumping true ise animasyonu baþlat
-            if (jumpTimer > 0.1f)
+            if (Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.UpArrow))
             {
-                animator.SetBool("isJumping", true);
-                jumpTimer = 0f;
+                Jump();
+            }
+
+            if(onWall() && !isGrounded())
+            {
+                rb.gravityScale = 0;
+                rb.velocity = Vector2.zero;
+            }
+            else
+            {
+                rb.gravityScale = 3;
+
             }
         }
+        else
+        {
+            wallJumpCooldown += Time.deltaTime;
+        }
+    }
 
-
+    private void Jump()
+    {
+        if (isGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            animator.SetBool("isJumping", true);
+        }
+        else if (onWall() && !isGrounded())
+        {
+            wallJumpCooldown = 0;
+            rb.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * walljumpForce, walljumpForce);
+            animator.SetBool("isJumping", true);
+        }
     }
 
     void FlipCharacter()
@@ -107,7 +124,8 @@ public class Player : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector3(horizontal * Time.deltaTime * speed, rb.velocity.y, 0);
-        animator.SetFloat("Speed", Mathf.Abs(horizontal));
+        if(isGrounded())
+            animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
         if(!isDead && horizontal > 0 && lookingRight == false)
         {
@@ -120,22 +138,27 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+
+    private bool isGrounded()
     {
-        if (collision.gameObject.tag == "Ground")
-        {
-            jump = true;
-        }
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
+        return raycastHit.collider != null;
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private bool onWall()
     {
-        if (collision.gameObject.tag == "Ground")
-        {
-            jump = false;
-        }
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(-transform.localScale.x, 0), 0.1f, wallLayer);
+        return raycastHit.collider != null;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(boxCollider.bounds.center, boxCollider.bounds.size);
 
     }
+
 
     private void RegenerateStamina() {
 

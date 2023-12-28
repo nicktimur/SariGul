@@ -34,7 +34,6 @@ public class RangedEnemy : MonoBehaviour
         this.enabled = false;
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-        GameObject.Find("Enemy Priest/Canvas Enemy").GetComponent<CanvasGroup>().alpha = 0;
 
         foreach (Behaviour component in components)
         {
