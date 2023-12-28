@@ -12,10 +12,19 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
 
+
+    [SerializeField] private float coyoteTime; // Karakterin havada asýlý kalýrken zýplayabilceði süre
+    private float coyoteCounter;
+
     public float horizontal;
     public float speed;
     public float jumpForce;
+
+    [Header("Wall jumping")]
     public float walljumpForce;
+    [SerializeField] private float wallJumpX;
+    [SerializeField] private float wallJumpY;
+
     public float downPower;
 
     bool lookingRight = true;
@@ -88,22 +97,48 @@ public class Player : MonoBehaviour
         {
             rb.gravityScale = 3;
             rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            if (isGrounded())
+            {
+                coyoteCounter = coyoteTime;
+            }
+            else
+            {
+                coyoteCounter -= Time.deltaTime;
+            }
         }
 
     }
 
     private void Jump()
     {
+        if (coyoteCounter < 0 && !onWall()) return;
+
         if (isGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             animator.SetBool("isJumping", true);
         }
-        else if (onWall() && !isGrounded())
+
+        if (onWall())
         {
-            rb.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * walljumpForce, walljumpForce);
-            animator.SetBool("isJumping", true);
+            WallJump();
         }
+        else
+        {
+            if (isGrounded())
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            else
+            {
+                if (coyoteCounter > 0)
+                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            }
+            coyoteCounter = 0;
+        }
+    }
+
+    private void WallJump()
+    {
+        rb.AddForce(new Vector2(Mathf.Sign(transform.localScale.x) * wallJumpX, wallJumpY));
     }
 
     void FlipCharacter()
