@@ -11,11 +11,17 @@ public class RangedEnemy : MonoBehaviour
     public Enemy enemy;
 
 
+    [SerializeField]
+    private AudioClip fireballSound;
+    [SerializeField] private AudioClip dieSound;
+
+
     private void RangedAttack()
     {
         enemy.cooldownTimer = 0;
         fireballs[FindFireball()].transform.position = firepoint.position;
         fireballs[FindFireball()].GetComponent<EnemyProjectile>().ActivateProjectile();
+        SoundManager.instance.PlaySound(fireballSound);
     }
 
     private int FindFireball()
@@ -31,6 +37,7 @@ public class RangedEnemy : MonoBehaviour
 
     public void Die()
     {
+        SoundManager.instance.PlaySound(dieSound);
         this.enabled = false;
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;

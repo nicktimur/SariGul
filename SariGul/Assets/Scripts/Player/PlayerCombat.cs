@@ -18,6 +18,9 @@ public class PlayerCombat : MonoBehaviour
     public StaminaBar staminaBar;
     public HealthBar healthBar;
 
+    [SerializeField] private AudioClip AttackSound;
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip dieSound;
     // Update is called once per frame
     void Update()
     {
@@ -36,6 +39,7 @@ public class PlayerCombat : MonoBehaviour
 
     void Attack()
     {
+        SoundManager.instance.PlaySound(AttackSound);
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, attackRange, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
@@ -45,6 +49,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        SoundManager.instance.PlaySound(hurtSound);
         player.health -= damage;
         anime.SetTrigger("Hurt");
         healthBar.setHealth(player.health);
@@ -69,6 +74,7 @@ public class PlayerCombat : MonoBehaviour
 
     void KillPlayer()
     {
+        SoundManager.instance.PlaySound(dieSound);
         anime.SetBool("Died", true);
         player.isDead = true;
 

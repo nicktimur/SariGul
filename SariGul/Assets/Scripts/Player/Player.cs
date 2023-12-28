@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
     public bool isDead = false;
     Vector3 scale;
 
+    [SerializeField] private AudioClip jumpSound;
+
 
     void Start()
     {
@@ -82,6 +84,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             Jump();
+            SoundManager.instance.PlaySound(jumpSound);
         }
 
         //Ayarlanabilir Zýplama Yüksekliði

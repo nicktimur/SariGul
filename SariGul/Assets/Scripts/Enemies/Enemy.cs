@@ -32,6 +32,9 @@ public class Enemy : MonoBehaviour
     public CloseEnemy closeEnemy;
     public RangedEnemy rangedEnemy;
 
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip AttackSound;
+
 
     private void Awake()
     {
@@ -107,6 +110,7 @@ public class Enemy : MonoBehaviour
 
     private void DamagePlayer()
     {
+        SoundManager.instance.PlaySound(AttackSound);
         if (PlayerInSight())
         {
             playerCombat.TakeDamage(damage);
@@ -115,6 +119,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        SoundManager.instance.PlaySound(hurtSound);
         currentHealth -= damage;
         healthBar.setHealth(currentHealth);
         anime.SetTrigger("Hurt");
