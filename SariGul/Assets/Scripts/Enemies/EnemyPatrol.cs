@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -26,6 +27,9 @@ public class EnemyPatrol : MonoBehaviour
 
     [Header("Player")]
     [SerializeField] private Player player;
+
+    [Header("HealthBar")]
+    [SerializeField] private Transform bar;
 
     private void Awake()
     {
@@ -79,6 +83,12 @@ public class EnemyPatrol : MonoBehaviour
 
     }
 
+    public void TurnBack()
+    {
+        movingLeft = !movingLeft;
+    }
+
+
     private void MoveInDirection(int _direction)
     {
         idleTimer = 0;
@@ -87,5 +97,7 @@ public class EnemyPatrol : MonoBehaviour
         enemy.localScale = new Vector3(-_direction, initScale.y, initScale.z);
 
         enemy.position = new Vector3(enemy.position.x + Time.deltaTime * _direction * speed, enemy.position.y, enemy.position.z);
+
+        bar.localScale = new Vector3(-_direction, initScale.y, initScale.z);
     }
 }

@@ -25,7 +25,7 @@ public class PlayerCombat : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0) && player.stamina > 0)
             {
-                Attack();
+                anime.SetTrigger("Attacking");
                 player.stamina -= 15;
                 staminaBar.setStamina(player.stamina);
                 nextAttackTime = Time.time + 1f / attackRate;
@@ -36,7 +36,6 @@ public class PlayerCombat : MonoBehaviour
 
     void Attack()
     {
-        anime.SetTrigger("Attacking");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, attackRange, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
@@ -53,6 +52,19 @@ public class PlayerCombat : MonoBehaviour
         {
             KillPlayer();
         }
+    }
+
+    public void TakeStaminaDamage(int damage)
+    {
+        player.health -= damage;
+        anime.SetTrigger("Hurt");
+        healthBar.setHealth(player.health);
+        if (player.health <= 0)
+        {
+            KillPlayer();
+        }
+        player.stamina -= damage * 5;
+        staminaBar.setStamina(player.stamina);
     }
 
     void KillPlayer()
