@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private CapsuleCollider2D boxCollider;
 
     [Header("Player Layer")]
-    private float cooldownTimer = Mathf.Infinity;
+    public float cooldownTimer = Mathf.Infinity;
     [SerializeField] public LayerMask playerLayer;
     public int maxHealth = 100;
     int currentHealth;
@@ -24,7 +24,10 @@ public class Enemy : MonoBehaviour
     public HealthBar healthBar;
     public PlayerCombat playerCombat;
     public Player player;
+    public string enemyType;
     private EnemyPatrol enemyPatrol;
+    public CloseEnemy closeEnemy;
+    public RangedEnemy rangedEnemy;
 
 
     private void Awake()
@@ -94,20 +97,12 @@ public class Enemy : MonoBehaviour
 
         if(currentHealth <= 0)
         {
-            Die();
+            anime.SetBool("IsDead", true);
+            if (enemyType == "Close")
+                closeEnemy.Die();
+            else if (enemyType == "Ranged")
+                rangedEnemy.Die();
         }
-    }
-
-    void Die()
-    {
-        anime.SetBool("IsDead", true);
-
-        this.enabled = false;
-        GetComponent<Collider2D>().enabled = false;
-        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-        GameObject.Find("Enemy Soldier/Canvas Enemy").GetComponent<CanvasGroup>().alpha = 0;
-
-
     }
 
 }
