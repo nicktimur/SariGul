@@ -10,10 +10,13 @@ public class Enemy : MonoBehaviour
     public int damage;
     [SerializeField] private float attackCooldown;
     [SerializeField] private float range;
+    [SerializeField] private float backRange;
 
     [Header("Collider Parametreleri")]
     [SerializeField] private float colliderDistance;
     [SerializeField] private CapsuleCollider2D boxCollider;
+    [SerializeField] private float backColliderDistance;
+
 
     [Header("Player Layer")]
     public float cooldownTimer = Mathf.Infinity;
@@ -25,7 +28,7 @@ public class Enemy : MonoBehaviour
     public PlayerCombat playerCombat;
     public Player player;
     public string enemyType;
-    private EnemyPatrol enemyPatrol;
+    [SerializeField] private EnemyPatrol enemyPatrol;
     public CloseEnemy closeEnemy;
     public RangedEnemy rangedEnemy;
 
@@ -62,6 +65,11 @@ public class Enemy : MonoBehaviour
         {
             anime.SetBool("PlayerDead", true);
         }
+
+        if (!player.isDead &&  PlayerInBack())
+        {
+            enemyPatrol.TurnBack();
+        }
     }
 
     private bool PlayerInSight()
@@ -74,11 +82,27 @@ public class Enemy : MonoBehaviour
 
         return hit.collider != null;
     }
+
+    private bool PlayerInBack()
+    {
+        RaycastHit2D hit =
+            Physics2D.BoxCast(boxCollider.bounds.center + transform.right * backRange * -transform.localScale.x * backColliderDistance,
+            new Vector3(boxCollider.bounds.size.x * backRange, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
+            0, Vector2.left, 0, playerLayer);
+
+
+        return hit.collider != null;
+    }
+
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * range * -transform.localScale.x * colliderDistance,
             new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
+
+        Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * backRange * -transform.localScale.x * backColliderDistance,
+            new Vector3(boxCollider.bounds.size.x * backRange, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
     }
 
     private void DamagePlayer()

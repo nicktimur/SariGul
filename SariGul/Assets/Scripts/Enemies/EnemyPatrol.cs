@@ -79,6 +79,12 @@ public class EnemyPatrol : MonoBehaviour
 
     }
 
+    public void TurnBack()
+    {
+        movingLeft = !movingLeft;
+    }
+
+
     private void MoveInDirection(int _direction)
     {
         idleTimer = 0;
