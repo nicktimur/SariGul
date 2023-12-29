@@ -21,5 +21,6 @@ WHERE IS HE???
 - [ ] Visual novel tarzı konuşma balonlarının ayarlanması
 - [ ] Boss Fight
 - [ ] Oyun Giriş ve Bitiş ekranları
-- [ ] Ölünce son checkpointi yükleme
+- [ ] Ölünce son checkpointi yükleme & ölüm ekranı
+- [ ] Esc tuşunda durdurma menüsü
 - <b>(Akla gelen her şey ve zamanla çıkan sorunlar buraya eklenecek)</b>
