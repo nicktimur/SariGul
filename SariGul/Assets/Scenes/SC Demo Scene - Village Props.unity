@@ -1248,6 +1248,8 @@ MonoBehaviour:
   AttackSound: {fileID: 8300000, guid: 9a639b0d453eecc4686204fe76af96e3, type: 3}
   hurtSound: {fileID: 8300000, guid: 7717033e21d64eb45a466baeb7627ef8, type: 3}
   dieSound: {fileID: 8300000, guid: 198e4a9d5e2444849b74b3944d989b6d, type: 3}
+  components:
+  - {fileID: 88496248}
 --- !u!114 &88496247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7531,6 +7533,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3564026850829729314, guid: 4da9b9761848a1848868ed8a0c18f051, type: 3}
   m_PrefabInstance: {fileID: 110682016}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &112354273
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 112354274}
+  m_Layer: 3
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &112354274
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112354273}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.58, y: 0.81000036, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1161789816}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &123491702
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14285,7 +14318,7 @@ GameObject:
   - component: {fileID: 700481304}
   m_Layer: 9
   m_Name: ShieldPoint
-  m_TagString: Untagged
+  m_TagString: Shield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19352,6 +19385,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 539177d7ea5719e4c8b1d9cdf95df441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1161789816 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2737854105986985974, guid: ca8a7b2ab54e35c4c85a4d84add2e6d3, type: 3}
+  m_PrefabInstance: {fileID: 6040759512381209727}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1174716336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31983,9 +32021,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 29456724795593750, guid: 308b745605399514da58c67444e634c5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 88496247}
+    - target: {fileID: 29456724795593750, guid: 308b745605399514da58c67444e634c5, type: 3}
       propertyPath: playerCombat
       value: 
       objectReference: {fileID: 88496246}
+    - target: {fileID: 163994070073221747, guid: 308b745605399514da58c67444e634c5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 88496247}
     - target: {fileID: 163994070073221747, guid: 308b745605399514da58c67444e634c5, type: 3}
       propertyPath: playerCombat
       value: 
@@ -31995,9 +32041,17 @@ PrefabInstance:
       value: EnemyPatrol3
       objectReference: {fileID: 0}
     - target: {fileID: 1351317280196396143, guid: 308b745605399514da58c67444e634c5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 88496247}
+    - target: {fileID: 1351317280196396143, guid: 308b745605399514da58c67444e634c5, type: 3}
       propertyPath: playerCombat
       value: 
       objectReference: {fileID: 88496246}
+    - target: {fileID: 1455735131024984682, guid: 308b745605399514da58c67444e634c5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 88496247}
     - target: {fileID: 1455735131024984682, guid: 308b745605399514da58c67444e634c5, type: 3}
       propertyPath: playerCombat
       value: 
@@ -32015,9 +32069,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 88496246}
     - target: {fileID: 2617683669543112931, guid: 308b745605399514da58c67444e634c5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 88496247}
+    - target: {fileID: 2617683669543112931, guid: 308b745605399514da58c67444e634c5, type: 3}
       propertyPath: playerCombat
       value: 
       objectReference: {fileID: 88496246}
+    - target: {fileID: 3547919561183736977, guid: 308b745605399514da58c67444e634c5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 88496247}
     - target: {fileID: 3547919561183736977, guid: 308b745605399514da58c67444e634c5, type: 3}
       propertyPath: playerCombat
       value: 
@@ -32032,11 +32094,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5869287142523085422, guid: 308b745605399514da58c67444e634c5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -80.45
+      value: -80.37
       objectReference: {fileID: 0}
     - target: {fileID: 5869287142523085422, guid: 308b745605399514da58c67444e634c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.01
+      value: 6.98
       objectReference: {fileID: 0}
     - target: {fileID: 5869287142523085422, guid: 308b745605399514da58c67444e634c5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -32071,9 +32133,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6163256543872772488, guid: 308b745605399514da58c67444e634c5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 88496247}
+    - target: {fileID: 6163256543872772488, guid: 308b745605399514da58c67444e634c5, type: 3}
       propertyPath: playerCombat
       value: 
       objectReference: {fileID: 88496246}
+    - target: {fileID: 7108114463017879316, guid: 308b745605399514da58c67444e634c5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 88496247}
     - target: {fileID: 7108114463017879316, guid: 308b745605399514da58c67444e634c5, type: 3}
       propertyPath: playerCombat
       value: 
@@ -32083,10 +32153,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1399234010}
     - target: {fileID: 8464216685216654605, guid: 308b745605399514da58c67444e634c5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 88496247}
+    - target: {fileID: 8464216685216654605, guid: 308b745605399514da58c67444e634c5, type: 3}
       propertyPath: playerCombat
       value: 
       objectReference: {fileID: 88496246}
     - target: {fileID: 8464578298669023933, guid: 308b745605399514da58c67444e634c5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 88496247}
+    - target: {fileID: 8788695269089201221, guid: 308b745605399514da58c67444e634c5, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 88496247}
@@ -34229,11 +34307,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1029989587991625568, guid: ca8a7b2ab54e35c4c85a4d84add2e6d3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -67.58
+      value: -60.6
       objectReference: {fileID: 0}
     - target: {fileID: 1029989587991625568, guid: ca8a7b2ab54e35c4c85a4d84add2e6d3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.69
+      value: 1.64
       objectReference: {fileID: 0}
     - target: {fileID: 1029989587991625568, guid: ca8a7b2ab54e35c4c85a4d84add2e6d3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -34276,9 +34354,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1399234010}
     - target: {fileID: 5012890600074531174, guid: ca8a7b2ab54e35c4c85a4d84add2e6d3, type: 3}
+      propertyPath: range
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5012890600074531174, guid: ca8a7b2ab54e35c4c85a4d84add2e6d3, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 88496247}
+    - target: {fileID: 5012890600074531174, guid: ca8a7b2ab54e35c4c85a4d84add2e6d3, type: 3}
+      propertyPath: AttackPoint
+      value: 
+      objectReference: {fileID: 112354274}
     - target: {fileID: 5012890600074531174, guid: ca8a7b2ab54e35c4c85a4d84add2e6d3, type: 3}
       propertyPath: rangedEnemy
       value: 
@@ -34301,7 +34387,10 @@ PrefabInstance:
       objectReference: {fileID: 88496247}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2737854105986985974, guid: ca8a7b2ab54e35c4c85a4d84add2e6d3, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 112354274}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca8a7b2ab54e35c4c85a4d84add2e6d3, type: 3}
 --- !u!1001 &6309599117538187374
@@ -35369,6 +35458,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 270801267454823861, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 88496247}
+    - target: {fileID: 270801267454823861, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
       propertyPath: playerCombat
       value: 
       objectReference: {fileID: 88496246}
@@ -35388,6 +35481,10 @@ PrefabInstance:
       propertyPath: playerCombat
       value: 
       objectReference: {fileID: 88496246}
+    - target: {fileID: 926439276103620288, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 88496247}
     - target: {fileID: 926439276103620288, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
       propertyPath: playerCombat
       value: 
@@ -35441,21 +35538,41 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1802841333727438442, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 88496247}
+    - target: {fileID: 1802841333727438442, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
       propertyPath: playerCombat
       value: 
       objectReference: {fileID: 88496246}
+    - target: {fileID: 4261333647251000950, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 88496247}
     - target: {fileID: 4261333647251000950, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
       propertyPath: playerCombat
       value: 
       objectReference: {fileID: 88496246}
     - target: {fileID: 4266323837713060927, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 88496247}
+    - target: {fileID: 4266323837713060927, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
       propertyPath: playerCombat
       value: 
       objectReference: {fileID: 88496246}
     - target: {fileID: 6067081578119860616, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 88496247}
+    - target: {fileID: 6067081578119860616, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
       propertyPath: playerCombat
       value: 
       objectReference: {fileID: 88496246}
+    - target: {fileID: 6519635373218946583, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 88496247}
     - target: {fileID: 6519635373218946583, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
       propertyPath: playerCombat
       value: 
@@ -35469,13 +35586,25 @@ PrefabInstance:
       value: EnemyPatrol2
       objectReference: {fileID: 0}
     - target: {fileID: 8131770042949924054, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 88496247}
+    - target: {fileID: 8131770042949924054, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
       propertyPath: playerCombat
       value: 
       objectReference: {fileID: 88496246}
     - target: {fileID: 8166750217735900009, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 88496247}
+    - target: {fileID: 8166750217735900009, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
       propertyPath: playerCombat
       value: 
       objectReference: {fileID: 88496246}
+    - target: {fileID: 8767085610745479242, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 88496247}
     - target: {fileID: 8767085610745479242, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
       propertyPath: playerCombat
       value: 
