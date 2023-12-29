@@ -12,7 +12,7 @@ WHERE IS HE???
 - [x] Takılma ve zıplama animasyonunun sorununun çözülmesi
 - [x] Hasar alan düşmanlar ve çeşitlilik
 - [x] Saldırı ve hasar animasyonlarının ayarlanması
-- [ ] Karaktere stamina kullanan kalkan özelliği
+- [x] Karaktere stamina kullanan kalkan özelliği
 - [ ] Açılabilen sandıklar
 - [ ] Sağlık yenileyen item
 - [ ] Düşman özelliklerinin item olarak kullanılabilmesi
