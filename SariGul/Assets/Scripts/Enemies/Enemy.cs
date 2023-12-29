@@ -34,6 +34,9 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private AudioClip hurtSound;
     [SerializeField] private AudioClip AttackSound;
+    public Transform AttackPoint;
+    public float attackRange = 0.5f;
+
 
 
     private void Awake()
@@ -111,10 +114,29 @@ public class Enemy : MonoBehaviour
     private void DamagePlayer()
     {
         SoundManager.instance.PlaySound(AttackSound);
-        if (PlayerInSight())
+        Collider2D[] hitplayer = Physics2D.OverlapCircleAll(AttackPoint.position, attackRange, playerLayer);
+
+        foreach (Collider2D playerr in hitplayer)
         {
-            playerCombat.TakeDamage(damage);
+            if (PlayerInSight())
+            {
+                if(!(player.shieldOn && player.transform.localScale.x != this.transform.localScale.x)) //Kalkan açýk deðilse
+                {
+                    playerr.GetComponent<PlayerCombat>().TakeDamage(damage);
+                }
+                else
+                {
+                    player.ShieldTakeDamage(damage);
+                }
+            }
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (AttackPoint == null)
+            return;
+        Gizmos.DrawWireSphere(AttackPoint.position, attackRange);
     }
 
     public void TakeDamage(int damage)

@@ -21,6 +21,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private AudioClip AttackSound;
     [SerializeField] private AudioClip hurtSound;
     [SerializeField] private AudioClip dieSound;
+    [SerializeField] private Behaviour[] components;
     // Update is called once per frame
     void Update()
     {
@@ -81,6 +82,11 @@ public class PlayerCombat : MonoBehaviour
         this.enabled = false;
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+
+        foreach (Behaviour component in components)
+        {
+            component.enabled = false;
+        }
     }
 
     void OnDrawGizmosSelected()

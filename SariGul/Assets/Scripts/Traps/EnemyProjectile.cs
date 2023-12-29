@@ -9,6 +9,7 @@ public class EnemyProjectile : MonoBehaviour
     private Animator anim;
     private BoxCollider2D coll;
     public PlayerCombat playerCombat;
+    [SerializeField] private Player player;
     [SerializeField] private Enemy enemy;
 
     private bool hit;
@@ -55,6 +56,8 @@ public class EnemyProjectile : MonoBehaviour
             playerCombat.TakeDamage(damage);
         else if (collision.tag == "Player" && rangeType == "ptn")
             playerCombat.TakeStaminaDamage(damage);
+        else if (collision.tag == "Shield")
+            player.ShieldTakeDamage(damage);
     }
 
     private void Deactivate()
