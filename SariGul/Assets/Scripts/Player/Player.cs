@@ -50,14 +50,20 @@ public class Player : MonoBehaviour
     Vector3 scale;
 
     [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private UI_Inventory uiInventory;
+
+    private Inventory inventory;
 
 
-    void Start()
+    private void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
         staminaBar.setMaxStamina(maxStamina);
         healthBar.setMaxHealth(maxHealth);
+
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
     }
 
     // Update is called once per frame
