@@ -101,6 +101,8 @@ public class Player : MonoBehaviour
             ShieldOn();
             shieldOn = true;
             SoundManager.instance.PlaySound(jumpSound);
+            stamina -= 20 * Time.deltaTime;
+            staminaBar.setStamina(stamina);
         }
 
         if (Input.GetKeyUp(KeyCode.LeftControl) || stamina < 10)
