@@ -52,12 +52,43 @@ public class Player : MonoBehaviour
 
     [SerializeField] private AudioClip jumpSound;
     [SerializeField] private UI_Inventory uiInventory;
+    [SerializeField] private float rangedAttackCooldown;
+    [SerializeField] private Animator heartAnimator;
 
     private Inventory inventory;
-    public GameObject chest;
+    private GameObject chest;
+    private float cooldownTimer = Mathf.Infinity;
+
+    [Header("Mesafeli Saldýrý")]
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject[] fireballs;
+    [SerializeField] private AudioClip fireballSound;
 
 
-    void Start()
+
+
+    private void RangedAttack()
+    {
+        if (cooldownTimer > rangedAttackCooldown)
+        {
+            inventory.RemoveItem(new Item { itemType = Item.ItemType.Fireball, amount = 1 });;
+            cooldownTimer = 0;
+            fireballs[FindFireball()].transform.position = firePoint.position;
+            fireballs[FindFireball()].GetComponent<PlayerProjectile>().SetDirection(Mathf.Sign(transform.localScale.x));
+        }
+    }
+    private int FindFireball()
+    {
+        for (int i = 0; i < fireballs.Length; i++)
+        {
+            if (!fireballs[i].activeInHierarchy)
+                return i;
+        }
+        return 0;
+    }
+
+
+void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
@@ -71,7 +102,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        cooldownTimer += Time.deltaTime;
         horizontal = Input.GetAxis("Horizontal");
 
         if (isGrounded())
@@ -79,9 +110,16 @@ public class Player : MonoBehaviour
 
         //Flip player when moving left-right
         if (horizontal > 0.01f && !isDead)
+        {
             transform.localScale = new Vector3(-1, 1, 1);
+        }
+
         else if (horizontal < -0.01f && !isDead)
+        {
             transform.localScale = Vector3.one;
+
+        }
+
 
         if (Input.GetKeyDown(KeyCode.S) && !isGrounded() || Input.GetKeyDown(KeyCode.DownArrow) && !isGrounded())
         {
@@ -170,6 +208,25 @@ public class Player : MonoBehaviour
 
     }
 
+    public void UseItem(Item item)
+    {
+        switch (item.itemType)
+        {
+            case Item.ItemType.HealthPotion:
+                health += 25;
+                if (health > 100) health = 100;
+                healthBar.setHealth(health);
+                heartAnimator.SetTrigger("Heal");
+                inventory.RemoveItem(new Item { itemType = Item.ItemType.HealthPotion, amount = 1 });
+                break;
+
+            case Item.ItemType.Fireball:
+                RangedAttack();
+                break;
+
+        }
+    }
+
     private bool ChestInSight()
     {
         RaycastHit2D hit =
@@ -186,7 +243,6 @@ public class Player : MonoBehaviour
 
         return hit.collider != null;
     }
-
 
     private void Jump()
     {
