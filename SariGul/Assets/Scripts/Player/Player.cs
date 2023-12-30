@@ -166,12 +166,14 @@ public class Player : MonoBehaviour
             Physics2D.BoxCast(boxCollider.bounds.center + transform.right * chestRange * -transform.localScale.x * colliderDistance,
             new Vector3(boxCollider.bounds.size.x * chestRange, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
             0, Vector2.left, 0, chestLayer);
-
+        if(hit.collider != null)
+        {
         chestName = hit.collider.gameObject.name;
         GameObject chest;
         chest = GameObject.Find(chestName);
         chestAnimator = chest.GetComponent<Animator>();
         chestCollider = chest.GetComponent<BoxCollider2D>();
+        }
 
         return hit.collider != null;
     }
