@@ -32,6 +32,12 @@ public class Enemy : MonoBehaviour
     public CloseEnemy closeEnemy;
     public RangedEnemy rangedEnemy;
 
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip AttackSound;
+    public Transform AttackPoint;
+    public float attackRange = 0.5f;
+
+
 
     private void Awake()
     {
@@ -107,14 +113,35 @@ public class Enemy : MonoBehaviour
 
     private void DamagePlayer()
     {
-        if (PlayerInSight())
+        SoundManager.instance.PlaySound(AttackSound);
+        Collider2D[] hitplayer = Physics2D.OverlapCircleAll(AttackPoint.position, attackRange, playerLayer);
+
+        foreach (Collider2D playerr in hitplayer)
         {
-            playerCombat.TakeDamage(damage);
+            if (PlayerInSight())
+            {
+                if(!(player.shieldOn && player.transform.localScale.x != this.transform.localScale.x)) //Kalkan açýk deðilse
+                {
+                    playerr.GetComponent<PlayerCombat>().TakeDamage(damage);
+                }
+                else
+                {
+                    player.ShieldTakeDamage(damage);
+                }
+            }
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (AttackPoint == null)
+            return;
+        Gizmos.DrawWireSphere(AttackPoint.position, attackRange);
     }
 
     public void TakeDamage(int damage)
     {
+        SoundManager.instance.PlaySound(hurtSound);
         currentHealth -= damage;
         healthBar.setHealth(currentHealth);
         anime.SetTrigger("Hurt");
