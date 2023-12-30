@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
     private Inventory inventory;
 
 
-    private void Awake()
+    void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
