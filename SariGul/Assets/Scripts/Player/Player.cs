@@ -1,3 +1,4 @@
+using Cainos.PixelArtPlatformer_VillageProps;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -50,20 +51,58 @@ public class Player : MonoBehaviour
     Vector3 scale;
 
     [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private UI_Inventory uiInventory;
+    [SerializeField] private float rangedAttackCooldown;
+    [SerializeField] private Animator heartAnimator;
+
+    private Inventory inventory;
+    private GameObject chest;
+    private float cooldownTimer = Mathf.Infinity;
+
+    [Header("Mesafeli Saldýrý")]
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject[] fireballs;
+    [SerializeField] private AudioClip fireballSound;
 
 
-    void Start()
+
+
+    private void RangedAttack()
+    {
+        if (cooldownTimer > rangedAttackCooldown)
+        {
+            inventory.RemoveItem(new Item { itemType = Item.ItemType.Fireball, amount = 1 });;
+            cooldownTimer = 0;
+            fireballs[FindFireball()].transform.position = firePoint.position;
+            fireballs[FindFireball()].GetComponent<PlayerProjectile>().SetDirection(Mathf.Sign(transform.localScale.x));
+        }
+    }
+    private int FindFireball()
+    {
+        for (int i = 0; i < fireballs.Length; i++)
+        {
+            if (!fireballs[i].activeInHierarchy)
+                return i;
+        }
+        return 0;
+    }
+
+
+void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
         staminaBar.setMaxStamina(maxStamina);
         healthBar.setMaxHealth(maxHealth);
+
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        cooldownTimer += Time.deltaTime;
         horizontal = Input.GetAxis("Horizontal");
 
         if (isGrounded())
@@ -71,9 +110,16 @@ public class Player : MonoBehaviour
 
         //Flip player when moving left-right
         if (horizontal > 0.01f && !isDead)
+        {
             transform.localScale = new Vector3(-1, 1, 1);
+        }
+
         else if (horizontal < -0.01f && !isDead)
+        {
             transform.localScale = Vector3.one;
+
+        }
+
 
         if (Input.GetKeyDown(KeyCode.S) && !isGrounded() || Input.GetKeyDown(KeyCode.DownArrow) && !isGrounded())
         {
@@ -156,8 +202,29 @@ public class Player : MonoBehaviour
         {
             chestAnimator.SetBool("IsOpened", true);
             chestCollider.enabled = false;
+
+            inventory.AddItem(chest.GetComponent<Chest>().GetItem());
         }
 
+    }
+
+    public void UseItem(Item item)
+    {
+        switch (item.itemType)
+        {
+            case Item.ItemType.HealthPotion:
+                health += 25;
+                if (health > 100) health = 100;
+                healthBar.setHealth(health);
+                heartAnimator.SetTrigger("Heal");
+                inventory.RemoveItem(new Item { itemType = Item.ItemType.HealthPotion, amount = 1 });
+                break;
+
+            case Item.ItemType.Fireball:
+                RangedAttack();
+                break;
+
+        }
     }
 
     private bool ChestInSight()
@@ -166,16 +233,16 @@ public class Player : MonoBehaviour
             Physics2D.BoxCast(boxCollider.bounds.center + transform.right * chestRange * -transform.localScale.x * colliderDistance,
             new Vector3(boxCollider.bounds.size.x * chestRange, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
             0, Vector2.left, 0, chestLayer);
-
+        if(hit.collider != null)
+        {
         chestName = hit.collider.gameObject.name;
-        GameObject chest;
         chest = GameObject.Find(chestName);
         chestAnimator = chest.GetComponent<Animator>();
         chestCollider = chest.GetComponent<BoxCollider2D>();
+        }
 
         return hit.collider != null;
     }
-
 
     private void Jump()
     {

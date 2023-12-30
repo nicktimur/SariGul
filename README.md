@@ -13,9 +13,9 @@ WHERE IS HE???
 - [x] Hasar alan düşmanlar ve çeşitlilik
 - [x] Saldırı ve hasar animasyonlarının ayarlanması
 - [x] Karaktere stamina kullanan kalkan özelliği
-- [ ] Açılabilen sandıklar
-- [ ] Sağlık yenileyen item
-- [ ] Düşman özelliklerinin item olarak kullanılabilmesi
+- [x] Açılabilen sandıklar
+- [x] Sağlık yenileyen item
+- [x] Düşman özelliklerinin item olarak kullanılabilmesi
 - [ ] Giriş bölümünün yapılışı
 - [ ] Giriş için açılış animasyonları ayarlanması
 - [ ] Visual novel tarzı konuşma balonlarının ayarlanması

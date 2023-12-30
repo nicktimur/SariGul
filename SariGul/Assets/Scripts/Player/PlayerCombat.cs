@@ -27,7 +27,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if(Time.time >= nextAttackTime)
         {
-            if (Input.GetMouseButtonDown(0) && player.stamina > 0)
+            if (Input.GetMouseButtonDown(0) && player.stamina > 0 && !player.shieldOn)
             {
                 anime.SetTrigger("Attacking");
                 player.stamina -= 15;
