@@ -1,3 +1,4 @@
+using Cainos.PixelArtPlatformer_VillageProps;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
     [SerializeField] private UI_Inventory uiInventory;
 
     private Inventory inventory;
+    public GameObject chest;
 
 
     void Start()
@@ -162,6 +164,8 @@ public class Player : MonoBehaviour
         {
             chestAnimator.SetBool("IsOpened", true);
             chestCollider.enabled = false;
+
+            inventory.AddItem(chest.GetComponent<Chest>().GetItem());
         }
 
     }
@@ -175,7 +179,6 @@ public class Player : MonoBehaviour
         if(hit.collider != null)
         {
         chestName = hit.collider.gameObject.name;
-        GameObject chest;
         chest = GameObject.Find(chestName);
         chestAnimator = chest.GetComponent<Animator>();
         chestCollider = chest.GetComponent<BoxCollider2D>();

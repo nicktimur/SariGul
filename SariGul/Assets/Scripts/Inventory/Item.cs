@@ -22,4 +22,16 @@ public class Item
             case ItemType.Fireball:     return ItemAssets.Instance.fireballSprite;
         }
     }
+
+    public bool IsStackable()
+    {
+        switch (itemType)
+        {
+            default:
+            case ItemType.HealthPotion:
+            case ItemType.Fireball:
+                return true;
+
+        }
+    }
 }

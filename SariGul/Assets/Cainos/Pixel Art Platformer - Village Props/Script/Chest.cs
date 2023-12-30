@@ -7,31 +7,19 @@ namespace Cainos.PixelArtPlatformer_VillageProps
 {
     public class Chest : MonoBehaviour
     {
-        [FoldoutGroup("Reference")]
-        public Animator animator;
+        public string itemType;
 
-        [FoldoutGroup("Runtime"), ShowInInspector, DisableInEditMode]
-        public bool IsOpened
+        public Item GetItem()
         {
-            get { return isOpened; }
-            set
+            if (itemType == "Health")
             {
-                isOpened = value;
-                animator.SetBool("IsOpened", isOpened);
+                return new Item { itemType = Item.ItemType.HealthPotion, amount = 1 };
             }
-        }
-        private bool isOpened;
-
-        [FoldoutGroup("Runtime"),Button("Open"), HorizontalGroup("Runtime/Button")]
-        public void Open()
-        {
-            IsOpened = true;
-        }
-
-        [FoldoutGroup("Runtime"), Button("Close"), HorizontalGroup("Runtime/Button")]
-        public void Close()
-        {
-            IsOpened = false;
+            else if (itemType == "Fireball")
+            {
+                return new Item { itemType = Item.ItemType.Fireball, amount = 1 };
+            }
+            return null;
         }
     }
 }
