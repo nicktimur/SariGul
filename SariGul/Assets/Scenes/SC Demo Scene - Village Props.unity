@@ -11335,7 +11335,7 @@ GameObject:
   - component: {fileID: 438520480}
   - component: {fileID: 438520479}
   m_Layer: 5
-  m_Name: amount
+  m_Name: amountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26342,7 +26342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9133877428241544938, guid: 47ff88e3969a50840a0b18036dd2acae, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
