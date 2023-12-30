@@ -13,6 +13,14 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private Shield shield;
 
+    [SerializeField] private float chestRange;
+    [SerializeField] private float colliderDistance;
+    [SerializeField] public LayerMask chestLayer;
+
+    private Animator chestAnimator;
+    private BoxCollider2D chestCollider;
+    private string chestName;
+
 
     [SerializeField] private float coyoteTime; // Karakterin havada asýlý kalýrken zýplayabilceði süre
     private float coyoteCounter;
@@ -142,7 +150,32 @@ public class Player : MonoBehaviour
             }
         }
 
+        //Sandýk açma
+
+        if (Input.GetKey(KeyCode.Z) && isGrounded() && ChestInSight())
+        {
+            chestAnimator.SetBool("IsOpened", true);
+            chestCollider.enabled = false;
+        }
+
     }
+
+    private bool ChestInSight()
+    {
+        RaycastHit2D hit =
+            Physics2D.BoxCast(boxCollider.bounds.center + transform.right * chestRange * -transform.localScale.x * colliderDistance,
+            new Vector3(boxCollider.bounds.size.x * chestRange, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
+            0, Vector2.left, 0, chestLayer);
+
+        chestName = hit.collider.gameObject.name;
+        GameObject chest;
+        chest = GameObject.Find(chestName);
+        chestAnimator = chest.GetComponent<Animator>();
+        chestCollider = chest.GetComponent<BoxCollider2D>();
+
+        return hit.collider != null;
+    }
+
 
     private void Jump()
     {
@@ -211,6 +244,10 @@ public class Player : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(boxCollider.bounds.center, boxCollider.bounds.size);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * chestRange * -transform.localScale.x * colliderDistance,
+            new Vector3(boxCollider.bounds.size.x * chestRange, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
 
     }
 
