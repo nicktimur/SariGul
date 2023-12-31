@@ -426,8 +426,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1169329657553967894}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.644, y: 0.136, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.6439972, y: 0.13600004, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -441,7 +441,7 @@ Transform:
   - {fileID: 6021656354111420853}
   - {fileID: 3659193420986018260}
   - {fileID: 1231880984731088777}
-  m_Father: {fileID: 1756525614964103190}
+  m_Father: {fileID: 8217669436614709684}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1760299152996978052
 GameObject:
@@ -821,7 +821,6 @@ Transform:
   - {fileID: 1756525615645691506}
   - {fileID: 485627795210746181}
   - {fileID: 6022926929839930333}
-  - {fileID: 7609189576766992315}
   m_Father: {fileID: 8217669436614709684}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1819411650768253038
@@ -2148,6 +2147,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7609189576766992315}
   - {fileID: 1756525614964103190}
   m_Father: {fileID: 1718125648453286390}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3361,7 +3361,6 @@ GameObject:
   - component: {fileID: 944062070874141208}
   - component: {fileID: 3844112284807404581}
   - component: {fileID: 1616628731038875704}
-  - component: {fileID: 6530202956553765795}
   - component: {fileID: 2704781434369524343}
   m_Layer: 6
   m_Name: Canvas Enemy
@@ -3465,19 +3464,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &6530202956553765795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9155259598819467053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ca6b361d2542c04782a51d55c19f126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!114 &2704781434369524343
 MonoBehaviour:
   m_ObjectHideFlags: 0

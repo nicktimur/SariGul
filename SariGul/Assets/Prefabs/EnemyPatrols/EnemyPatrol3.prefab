@@ -273,8 +273,6 @@ MonoBehaviour:
   rangeType: ptn
   speed: 6
   resetTime: 5
-  playerCombat: {fileID: 0}
-  player: {fileID: 0}
   enemy: {fileID: 2576171290422048538}
 --- !u!1 &747821854669094184
 GameObject:
@@ -474,8 +472,6 @@ MonoBehaviour:
   rangeType: ptn
   speed: 6
   resetTime: 5
-  playerCombat: {fileID: 0}
-  player: {fileID: 0}
   enemy: {fileID: 2576171290422048538}
 --- !u!1 &754246875424879309
 GameObject:
@@ -675,8 +671,6 @@ MonoBehaviour:
   rangeType: ptn
   speed: 6
   resetTime: 5
-  playerCombat: {fileID: 0}
-  player: {fileID: 0}
   enemy: {fileID: 2576171290422048538}
 --- !u!1 &961263743698011629
 GameObject:
@@ -876,8 +870,6 @@ MonoBehaviour:
   rangeType: ptn
   speed: 6
   resetTime: 5
-  playerCombat: {fileID: 0}
-  player: {fileID: 0}
   enemy: {fileID: 2576171290422048538}
 --- !u!1 &1101858323890113755
 GameObject:
@@ -963,6 +955,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4729062414702492992}
   - {fileID: 3483580571622066925}
   m_Father: {fileID: 5869287142523085422}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1164,8 +1157,6 @@ MonoBehaviour:
   rangeType: ptn
   speed: 6
   resetTime: 5
-  playerCombat: {fileID: 0}
-  player: {fileID: 0}
   enemy: {fileID: 2576171290422048538}
 --- !u!1 &2011217921229065537
 GameObject:
@@ -1469,8 +1460,6 @@ MonoBehaviour:
   rangeType: ptn
   speed: 6
   resetTime: 5
-  playerCombat: {fileID: 0}
-  player: {fileID: 0}
   enemy: {fileID: 2576171290422048538}
 --- !u!1 &3482850888026574607
 GameObject:
@@ -1850,7 +1839,6 @@ Transform:
   - {fileID: 3483580571192171657}
   - {fileID: 3352102295560301502}
   - {fileID: 8912052530466072870}
-  - {fileID: 4729062414702492992}
   m_Father: {fileID: 6499611802336363343}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3532966080556081813
@@ -2359,8 +2347,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4035805327175076333}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.644, y: 0.136, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.6439972, y: 0.13600016, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2374,7 +2362,7 @@ Transform:
   - {fileID: 9111361643706731383}
   - {fileID: 2862778269250947521}
   - {fileID: 5198736240571342042}
-  m_Father: {fileID: 3483580571622066925}
+  m_Father: {fileID: 6499611802336363343}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4335123637259519183
 GameObject:
@@ -2574,8 +2562,6 @@ MonoBehaviour:
   rangeType: ptn
   speed: 6
   resetTime: 5
-  playerCombat: {fileID: 0}
-  player: {fileID: 0}
   enemy: {fileID: 2576171290422048538}
 --- !u!1 &4956083482183502201
 GameObject:
@@ -2806,8 +2792,6 @@ MonoBehaviour:
   rangeType: ptn
   speed: 6
   resetTime: 5
-  playerCombat: {fileID: 0}
-  player: {fileID: 0}
   enemy: {fileID: 2576171290422048538}
 --- !u!1 &5166774030732858193
 GameObject:
@@ -3069,8 +3053,6 @@ MonoBehaviour:
   rangeType: ptn
   speed: 6
   resetTime: 5
-  playerCombat: {fileID: 0}
-  player: {fileID: 0}
   enemy: {fileID: 2576171290422048538}
 --- !u!1 &5888007717596276836
 GameObject:
@@ -3270,8 +3252,6 @@ MonoBehaviour:
   rangeType: ptn
   speed: 6
   resetTime: 5
-  playerCombat: {fileID: 0}
-  player: {fileID: 0}
   enemy: {fileID: 2576171290422048538}
 --- !u!1 &6284281480557202902
 GameObject:
@@ -3286,7 +3266,6 @@ GameObject:
   - component: {fileID: 2675630608191611107}
   - component: {fileID: 2117047442780851934}
   - component: {fileID: 4492111847414059715}
-  - component: {fileID: 8261770308460269912}
   - component: {fileID: 986592666178932876}
   m_Layer: 6
   m_Name: Canvas Enemy
@@ -3390,19 +3369,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &8261770308460269912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6284281480557202902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ca6b361d2542c04782a51d55c19f126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!114 &986592666178932876
 MonoBehaviour:
   m_ObjectHideFlags: 0

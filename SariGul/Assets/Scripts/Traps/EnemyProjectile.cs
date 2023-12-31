@@ -8,8 +8,8 @@ public class EnemyProjectile : MonoBehaviour
     private float lifetime;
     private Animator anim;
     private BoxCollider2D coll;
-    public PlayerCombat playerCombat;
-    [SerializeField] private Player player;
+    private PlayerCombat playerCombat;
+    private Player player;
     [SerializeField] private Enemy enemy;
 
     private bool hit;
@@ -18,6 +18,9 @@ public class EnemyProjectile : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         coll = GetComponent<BoxCollider2D>();
+        string playerName = "PlayerKnight";
+        player = GameObject.Find(playerName).GetComponent<Player>();
+        playerCombat = GameObject.Find(playerName).GetComponent<PlayerCombat>();
     }
 
     public void ActivateProjectile()

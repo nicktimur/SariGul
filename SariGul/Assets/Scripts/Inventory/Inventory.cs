@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Item;
 
 public class Inventory
 {
@@ -11,6 +12,7 @@ public class Inventory
     public Inventory() 
     { 
         itemList = new List<Item>();
+        AddItem(new Item { itemType = Item.ItemType.Fireball, amount = 10 });
     }
 
     public void AddItem(Item item)

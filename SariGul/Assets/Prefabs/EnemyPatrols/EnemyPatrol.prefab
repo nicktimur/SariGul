@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5197882368207489226}
   - component: {fileID: 8854753107359822298}
   - component: {fileID: 8467298627213826619}
-  - component: {fileID: 4842410445412486429}
   - component: {fileID: 7325831826941484755}
   m_Layer: 6
   m_Name: Canvas Enemy
@@ -117,19 +116,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &4842410445412486429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 337390332162039297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ca6b361d2542c04782a51d55c19f126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!114 &7325831826941484755
 MonoBehaviour:
   m_ObjectHideFlags: 0
