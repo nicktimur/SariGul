@@ -11,8 +11,6 @@ public class Inventory
     public Inventory() 
     { 
         itemList = new List<Item>();
-        AddItem(new Item { itemType = Item.ItemType.Fireball, amount = 10 });
-        AddItem(new Item { itemType = Item.ItemType.HealthPotion, amount = 10 });
     }
 
     public void AddItem(Item item)
