@@ -17,7 +17,6 @@ public class PlayerProjectile : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
-        speed += 5;
     }
     private void Update()
     {

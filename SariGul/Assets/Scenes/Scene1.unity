@@ -20828,7 +20828,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.829
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -20877,7 +20877,7 @@ Transform:
   m_GameObject: {fileID: 1303708315}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -78.71753, y: 7.128143, z: -0.21134186}
+  m_LocalPosition: {x: 46.24, y: 6.19, z: -0.21134186}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -40431,7 +40431,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9ef7eb96970edb7469847608d3fc0cb3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.056
+  m_Volume: 0.03
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -41106,6 +41106,6 @@ SceneRoots:
   - {fileID: 1232926466}
   - {fileID: 7428526067823137942}
   - {fileID: 1303708318}
-  - {fileID: 180767351}
-  - {fileID: 1519194377}
   - {fileID: 168355695}
+  - {fileID: 1519194377}
+  - {fileID: 180767351}
