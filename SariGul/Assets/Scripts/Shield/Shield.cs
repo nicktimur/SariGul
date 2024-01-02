@@ -15,7 +15,7 @@ public class Shield : MonoBehaviour
 
     }
 
-    private void DeactivateShield()
+    public void DeactivateShield()
     {
         gameObject.SetActive(false);
         foreach (Behaviour component in components)

@@ -623,7 +623,7 @@ MonoBehaviour:
   playerCombat: {fileID: 0}
   player: {fileID: 0}
   enemyType: Close
-  enemyPatrol: {fileID: 0}
+  enemyPatrol: {fileID: 8773542786389847372}
   closeEnemy: {fileID: 6489229790362424738}
   rangedEnemy: {fileID: 0}
   hurtSound: {fileID: 8300000, guid: 7717033e21d64eb45a466baeb7627ef8, type: 3}

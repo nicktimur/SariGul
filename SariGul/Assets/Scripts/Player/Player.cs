@@ -110,17 +110,16 @@ public class Player : MonoBehaviour
             animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
         //Flip player when moving left-right
-        if (horizontal > 0.01f && !isDead)
+        if (horizontal > 0.01f && !isDead && !shieldOn)
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
 
-        else if (horizontal < -0.01f && !isDead)
+        else if (horizontal < -0.01f && !isDead && !shieldOn)
         {
             transform.localScale = Vector3.one;
 
         }
-
 
         if (Input.GetKeyDown(KeyCode.S) && !isGrounded() || Input.GetKeyDown(KeyCode.DownArrow) && !isGrounded())
         {
@@ -145,37 +144,51 @@ public class Player : MonoBehaviour
             RegenerateStamina();
         }
 
-        if (isGrounded())
+        if (shieldOn)
+        {
+            stamina -= 0.02f;
+            staminaBar.setStamina(stamina);
+        }
+
+        if (isGrounded() && !onWall())
         {
             animator.SetBool("isJumping", false);
+        }
+        else
+        {
+            animator.SetBool("isJumping", true);
         }
 
         //Kalkan
         if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded() && stamina > 10)
         {
-            ShieldOn();
             shieldOn = true;
             SoundManager.instance.PlaySound(jumpSound);
             stamina -= 20 * Time.deltaTime;
             staminaBar.setStamina(stamina);
+            ShieldOn();
         }
 
         if (Input.GetKeyUp(KeyCode.LeftControl) || stamina < 10)
         {
             shieldOn = false;
             animator.SetBool("Shield", false);
-            shield.ActivateShield();
+            shield.DeactivateShield();
         }
 
         //Zýplama
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
+            animator.SetBool("isJumping", true);
             Jump();
         }
 
         //Ayarlanabilir Zýplama Yüksekliði
         if (Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0 || Input.GetKeyUp(KeyCode.UpArrow) && rb.velocity.y > 0)
+        {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
+            animator.SetBool("isJumping", true);
+        }
 
         if (onWall())
         {
@@ -186,7 +199,9 @@ public class Player : MonoBehaviour
         {
             rb.gravityScale = 3;
             if (!shieldOn)
+            {
                 rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            }
             if (isGrounded())
             {
                 coyoteCounter = coyoteTime;
@@ -198,7 +213,6 @@ public class Player : MonoBehaviour
         }
 
         //Sandýk açma
-
         if (Input.GetKey(KeyCode.Z) && isGrounded() && ChestInSight())
         {
             chestAnimator.SetBool("IsOpened", true);
@@ -247,14 +261,8 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
+        animator.SetBool("isJumping", true);
         if (coyoteCounter < 0 && !onWall()) return;
-
-        if (isGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            animator.SetBool("isJumping", true);
-            SoundManager.instance.PlaySound(jumpSound);
-        }
 
         if (onWall())
         {
@@ -263,14 +271,29 @@ public class Player : MonoBehaviour
         else
         {
             if (isGrounded())
+            {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                SoundManager.instance.PlaySound(jumpSound);
+                animator.SetBool("isJumping", true);
+            }
             else
             {
                 if (coyoteCounter > 0)
+                {
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                    SoundManager.instance.PlaySound(jumpSound);
+                    animator.SetBool("isJumping", true);
+                }
+
             }
             coyoteCounter = 0;
         }
+    }
+    private void WallJump()
+    {
+        rb.AddForce(new Vector2(Mathf.Sign(transform.localScale.x) * wallJumpX, wallJumpY));
+        animator.SetBool("isJumping", true);
+        SoundManager.instance.PlaySound(jumpSound);
     }
 
     public void ShieldTakeDamage(int damage)
@@ -288,11 +311,6 @@ public class Player : MonoBehaviour
         rb.velocity = Vector2.zero;
     }
 
-    private void WallJump()
-    {
-        rb.AddForce(new Vector2(Mathf.Sign(transform.localScale.x) * wallJumpX, wallJumpY));
-        SoundManager.instance.PlaySound(jumpSound);
-    }
 
 
 
@@ -325,24 +343,26 @@ public class Player : MonoBehaviour
 
         animator.SetBool("isRunning", false);
         speed = walkingSpeed;
-
-        if (stamina < 100)
+        if (!shieldOn)
         {
-            stamina += 10 * Time.deltaTime;
-            staminaBar.setStamina(stamina);
-            if (stamina > 10)
+            if (stamina < 100)
             {
-                noStamina = false;
+                stamina += 10 * Time.deltaTime;
+                staminaBar.setStamina(stamina);
+                if (stamina > 10)
+                {
+                    noStamina = false;
+                }
+                else
+                {
+                    noStamina = true;
+                }
             }
             else
             {
-                noStamina = true;
+                stamina = 100;
+                staminaBar.setStamina(stamina);
             }
-        }
-        else
-        {
-            stamina = 100;
-            staminaBar.setStamina(stamina);
         }
     }
 

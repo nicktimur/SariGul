@@ -62,13 +62,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void TakeStaminaDamage(int damage)
     {
-        player.health -= damage;
-        anime.SetTrigger("Hurt");
-        healthBar.setHealth(player.health);
-        if (player.health <= 0)
-        {
-            KillPlayer();
-        }
+        TakeDamage(damage);
         player.stamina -= damage * 5;
         staminaBar.setStamina(player.stamina);
     }
