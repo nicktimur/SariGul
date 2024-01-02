@@ -71,8 +71,9 @@ public class Player : MonoBehaviour
     {
         if (cooldownTimer > rangedAttackCooldown)
         {
-            inventory.RemoveItem(new Item { itemType = Item.ItemType.Fireball, amount = 1 });;
+            inventory.RemoveItem(new Item { itemType = Item.ItemType.Fireball, amount = 1 }); ;
             cooldownTimer = 0;
+            SoundManager.instance.PlaySound(fireballSound);
             fireballs[FindFireball()].transform.position = firePoint.position;
             fireballs[FindFireball()].GetComponent<PlayerProjectile>().SetDirection(Mathf.Sign(transform.localScale.x));
         }
@@ -88,7 +89,7 @@ public class Player : MonoBehaviour
     }
 
 
-void Start()
+    void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
@@ -132,7 +133,7 @@ void Start()
         {
             if (Mathf.Abs(horizontal) > 0.1)
             {
-                animator.SetBool("isRunning", true);    
+                animator.SetBool("isRunning", true);
                 speed = runningSpeed;
                 stamina -= 12 * Time.deltaTime;
                 staminaBar.setStamina(stamina);
@@ -184,7 +185,7 @@ void Start()
         else
         {
             rb.gravityScale = 3;
-            if(!shieldOn)
+            if (!shieldOn)
                 rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
             if (isGrounded())
             {
@@ -233,12 +234,12 @@ void Start()
             Physics2D.BoxCast(boxCollider.bounds.center + transform.right * chestRange * -transform.localScale.x * colliderDistance,
             new Vector3(boxCollider.bounds.size.x * chestRange, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
             0, Vector2.left, 0, chestLayer);
-        if(hit.collider != null)
+        if (hit.collider != null)
         {
-        chestName = hit.collider.gameObject.name;
-        chest = GameObject.Find(chestName);
-        chestAnimator = chest.GetComponent<Animator>();
-        chestCollider = chest.GetComponent<BoxCollider2D>();
+            chestName = hit.collider.gameObject.name;
+            chest = GameObject.Find(chestName);
+            chestAnimator = chest.GetComponent<Animator>();
+            chestCollider = chest.GetComponent<BoxCollider2D>();
         }
 
         return hit.collider != null;
