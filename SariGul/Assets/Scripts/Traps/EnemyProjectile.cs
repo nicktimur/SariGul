@@ -1,3 +1,4 @@
+using Cainos.PixelArtPlatformer_VillageProps;
 using UnityEditor.AnimatedValues;
 using UnityEditor.UI;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class EnemyProjectile : MonoBehaviour
     private PlayerCombat playerCombat;
     private Player player;
     [SerializeField] private Enemy enemy;
+    private Enemy damagedEnemy; 
 
     private bool hit;
 
@@ -63,6 +65,11 @@ public class EnemyProjectile : MonoBehaviour
             playerCombat.TakeStaminaDamage(damage);
         else if (collision.tag == "Shield")
             player.ShieldTakeDamage(damage);
+        else if( collision.tag == "Enemy")
+        {
+            damagedEnemy = collision.gameObject.GetComponent<Enemy>();
+            damagedEnemy.TakeDamage(damage);
+        }
     }
 
     private void Deactivate()

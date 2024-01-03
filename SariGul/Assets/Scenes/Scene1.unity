@@ -784,6 +784,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2734661001232231830, guid: ca8a7b2ab54e35c4c85a4d84add2e6d3, type: 3}
+      propertyPath: m_Name
+      value: Enemy Soldier 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3399521742666010963, guid: ca8a7b2ab54e35c4c85a4d84add2e6d3, type: 3}
       propertyPath: m_Name
       value: EnemyPatrol (2)
@@ -31846,6 +31850,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2734661001232231830, guid: ca8a7b2ab54e35c4c85a4d84add2e6d3, type: 3}
+      propertyPath: m_Name
+      value: Enemy Soldier 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3399521742666010963, guid: ca8a7b2ab54e35c4c85a4d84add2e6d3, type: 3}
       propertyPath: m_Name
       value: EnemyPatrol (1)
@@ -46637,6 +46645,10 @@ PrefabInstance:
       propertyPath: playerCombat
       value: 
       objectReference: {fileID: 1142502970}
+    - target: {fileID: 3482850891003589987, guid: 308b745605399514da58c67444e634c5, type: 3}
+      propertyPath: m_Name
+      value: Potion Enemy Priest 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4054220687501103667, guid: 308b745605399514da58c67444e634c5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -60256,6 +60268,10 @@ PrefabInstance:
     - target: {fileID: 1718125648453286390, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760299155950462872, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
+      propertyPath: m_Name
+      value: Enemy Priest 1
       objectReference: {fileID: 0}
     - target: {fileID: 8065654536690579738, guid: 3ad6d0d7e775e7e4fb196f9da05e224e, type: 3}
       propertyPath: m_Name
