@@ -71,8 +71,9 @@ public class Player : MonoBehaviour
     {
         if (cooldownTimer > rangedAttackCooldown)
         {
-            inventory.RemoveItem(new Item { itemType = Item.ItemType.Fireball, amount = 1 });;
+            inventory.RemoveItem(new Item { itemType = Item.ItemType.Fireball, amount = 1 }); ;
             cooldownTimer = 0;
+            SoundManager.instance.PlaySound(fireballSound);
             fireballs[FindFireball()].transform.position = firePoint.position;
             fireballs[FindFireball()].GetComponent<PlayerProjectile>().SetDirection(Mathf.Sign(transform.localScale.x));
         }
@@ -88,7 +89,7 @@ public class Player : MonoBehaviour
     }
 
 
-void Start()
+    void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
@@ -109,17 +110,16 @@ void Start()
             animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
         //Flip player when moving left-right
-        if (horizontal > 0.01f && !isDead)
+        if (horizontal > 0.01f && !isDead && !shieldOn)
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
 
-        else if (horizontal < -0.01f && !isDead)
+        else if (horizontal < -0.01f && !isDead && !shieldOn)
         {
             transform.localScale = Vector3.one;
 
         }
-
 
         if (Input.GetKeyDown(KeyCode.S) && !isGrounded() || Input.GetKeyDown(KeyCode.DownArrow) && !isGrounded())
         {
@@ -132,7 +132,7 @@ void Start()
         {
             if (Mathf.Abs(horizontal) > 0.1)
             {
-                animator.SetBool("isRunning", true);    
+                animator.SetBool("isRunning", true);
                 speed = runningSpeed;
                 stamina -= 12 * Time.deltaTime;
                 staminaBar.setStamina(stamina);
@@ -144,37 +144,51 @@ void Start()
             RegenerateStamina();
         }
 
-        if (isGrounded())
+        if (shieldOn)
+        {
+            stamina -= 0.02f;
+            staminaBar.setStamina(stamina);
+        }
+
+        if (isGrounded() && !onWall())
         {
             animator.SetBool("isJumping", false);
+        }
+        else
+        {
+            animator.SetBool("isJumping", true);
         }
 
         //Kalkan
         if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded() && stamina > 10)
         {
-            ShieldOn();
             shieldOn = true;
             SoundManager.instance.PlaySound(jumpSound);
             stamina -= 20 * Time.deltaTime;
             staminaBar.setStamina(stamina);
+            ShieldOn();
         }
 
         if (Input.GetKeyUp(KeyCode.LeftControl) || stamina < 10)
         {
             shieldOn = false;
             animator.SetBool("Shield", false);
-            shield.ActivateShield();
+            shield.DeactivateShield();
         }
 
         //Zýplama
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
+            animator.SetBool("isJumping", true);
             Jump();
         }
 
         //Ayarlanabilir Zýplama Yüksekliði
         if (Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0 || Input.GetKeyUp(KeyCode.UpArrow) && rb.velocity.y > 0)
+        {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
+            animator.SetBool("isJumping", true);
+        }
 
         if (onWall())
         {
@@ -184,8 +198,10 @@ void Start()
         else
         {
             rb.gravityScale = 3;
-            if(!shieldOn)
+            if (!shieldOn)
+            {
                 rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            }
             if (isGrounded())
             {
                 coyoteCounter = coyoteTime;
@@ -197,7 +213,6 @@ void Start()
         }
 
         //Sandýk açma
-
         if (Input.GetKey(KeyCode.Z) && isGrounded() && ChestInSight())
         {
             chestAnimator.SetBool("IsOpened", true);
@@ -233,12 +248,12 @@ void Start()
             Physics2D.BoxCast(boxCollider.bounds.center + transform.right * chestRange * -transform.localScale.x * colliderDistance,
             new Vector3(boxCollider.bounds.size.x * chestRange, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
             0, Vector2.left, 0, chestLayer);
-        if(hit.collider != null)
+        if (hit.collider != null)
         {
-        chestName = hit.collider.gameObject.name;
-        chest = GameObject.Find(chestName);
-        chestAnimator = chest.GetComponent<Animator>();
-        chestCollider = chest.GetComponent<BoxCollider2D>();
+            chestName = hit.collider.gameObject.name;
+            chest = GameObject.Find(chestName);
+            chestAnimator = chest.GetComponent<Animator>();
+            chestCollider = chest.GetComponent<BoxCollider2D>();
         }
 
         return hit.collider != null;
@@ -246,14 +261,8 @@ void Start()
 
     private void Jump()
     {
+        animator.SetBool("isJumping", true);
         if (coyoteCounter < 0 && !onWall()) return;
-
-        if (isGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            animator.SetBool("isJumping", true);
-            SoundManager.instance.PlaySound(jumpSound);
-        }
 
         if (onWall())
         {
@@ -262,14 +271,29 @@ void Start()
         else
         {
             if (isGrounded())
+            {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                SoundManager.instance.PlaySound(jumpSound);
+                animator.SetBool("isJumping", true);
+            }
             else
             {
                 if (coyoteCounter > 0)
+                {
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                    SoundManager.instance.PlaySound(jumpSound);
+                    animator.SetBool("isJumping", true);
+                }
+
             }
             coyoteCounter = 0;
         }
+    }
+    private void WallJump()
+    {
+        rb.AddForce(new Vector2(Mathf.Sign(transform.localScale.x) * wallJumpX, wallJumpY));
+        animator.SetBool("isJumping", true);
+        SoundManager.instance.PlaySound(jumpSound);
     }
 
     public void ShieldTakeDamage(int damage)
@@ -287,11 +311,6 @@ void Start()
         rb.velocity = Vector2.zero;
     }
 
-    private void WallJump()
-    {
-        rb.AddForce(new Vector2(Mathf.Sign(transform.localScale.x) * wallJumpX, wallJumpY));
-        SoundManager.instance.PlaySound(jumpSound);
-    }
 
 
 
@@ -324,24 +343,26 @@ void Start()
 
         animator.SetBool("isRunning", false);
         speed = walkingSpeed;
-
-        if (stamina < 100)
+        if (!shieldOn)
         {
-            stamina += 10 * Time.deltaTime;
-            staminaBar.setStamina(stamina);
-            if (stamina > 10)
+            if (stamina < 100)
             {
-                noStamina = false;
+                stamina += 10 * Time.deltaTime;
+                staminaBar.setStamina(stamina);
+                if (stamina > 10)
+                {
+                    noStamina = false;
+                }
+                else
+                {
+                    noStamina = true;
+                }
             }
             else
             {
-                noStamina = true;
+                stamina = 100;
+                staminaBar.setStamina(stamina);
             }
-        }
-        else
-        {
-            stamina = 100;
-            staminaBar.setStamina(stamina);
         }
     }
 

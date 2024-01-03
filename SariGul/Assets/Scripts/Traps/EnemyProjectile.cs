@@ -1,3 +1,6 @@
+using Cainos.PixelArtPlatformer_VillageProps;
+using UnityEditor.AnimatedValues;
+using UnityEditor.UI;
 using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour
@@ -8,9 +11,10 @@ public class EnemyProjectile : MonoBehaviour
     private float lifetime;
     private Animator anim;
     private BoxCollider2D coll;
-    public PlayerCombat playerCombat;
-    [SerializeField] private Player player;
+    private PlayerCombat playerCombat;
+    private Player player;
     [SerializeField] private Enemy enemy;
+    private Enemy damagedEnemy; 
 
     private bool hit;
 
@@ -18,6 +22,9 @@ public class EnemyProjectile : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         coll = GetComponent<BoxCollider2D>();
+        string playerName = "PlayerKnight";
+        player = GameObject.Find(playerName).GetComponent<Player>();
+        playerCombat = GameObject.Find(playerName).GetComponent<PlayerCombat>();
     }
 
     public void ActivateProjectile()
@@ -58,6 +65,11 @@ public class EnemyProjectile : MonoBehaviour
             playerCombat.TakeStaminaDamage(damage);
         else if (collision.tag == "Shield")
             player.ShieldTakeDamage(damage);
+        else if( collision.tag == "Enemy")
+        {
+            damagedEnemy = collision.gameObject.GetComponent<Enemy>();
+            damagedEnemy.TakeDamage(damage);
+        }
     }
 
     private void Deactivate()

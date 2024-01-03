@@ -21,7 +21,7 @@ public class PlayerProjectile : MonoBehaviour
     private void Update()
     {
         if (hit) return;
-        float movementSpeed = speed * Time.deltaTime * direction + Mathf.Abs(player.GetComponent<Rigidbody2D>().velocity.x / 100);
+        float movementSpeed = speed * Time.deltaTime * direction;
         transform.Translate(movementSpeed, 0, 0);
 
         lifetime += Time.deltaTime;
