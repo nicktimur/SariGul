@@ -22,5 +22,6 @@ WHERE IS HE???
 - [ ] Boss Fight
 - [ ] Oyun Giriş ve Bitiş ekranları
 - [ ] Ölünce son checkpointi yükleme & ölüm ekranı
+- [ ] Bölüm sonlarında sonraki bölüm için player verilerini kayıt alma
 - [ ] Esc tuşunda durdurma menüsü
 - <b>(Akla gelen her şey ve zamanla çıkan sorunlar buraya eklenecek)</b>
