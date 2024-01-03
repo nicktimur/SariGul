@@ -33,7 +33,7 @@ public class RangedBackgroundEnemy : MonoBehaviour
     {
         fireballs[FindFireball()].transform.position = firepoint.position;
         fireballs[FindFireball()].GetComponent<BackgroundEnemyProjectile>().ActivateProjectile();
-        SoundManager.instance.PlaySound(fireballSound);
+        WarSound.instance.PlaySound(fireballSound);
     }
 
     private int FindFireball()
