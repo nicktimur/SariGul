@@ -11,7 +11,7 @@ public class PlayerCombat : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     public int attackDamage = 20;
-    public float attackRate = 2f;
+    private float attackRate = 2f;
 
     float nextAttackTime = 0f;
     public Player player;
@@ -30,7 +30,7 @@ public class PlayerCombat : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && player.stamina > 0 && !player.shieldOn)
             {
                 anime.SetTrigger("Attacking");
-                player.stamina -= 15;
+                player.stamina -= 30;
                 staminaBar.setStamina(player.stamina);
                 nextAttackTime = Time.time + 1f / attackRate;
             }
