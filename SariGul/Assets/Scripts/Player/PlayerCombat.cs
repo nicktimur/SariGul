@@ -22,6 +22,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private AudioClip hurtSound;
     [SerializeField] private AudioClip dieSound;
     [SerializeField] private Behaviour[] components;
+
     // Update is called once per frame
     void Update()
     {
@@ -46,6 +47,7 @@ public class PlayerCombat : MonoBehaviour
         {
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
+
     }
 
     public void TakeDamage(int damage)

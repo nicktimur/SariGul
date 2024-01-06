@@ -63,7 +63,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject[] fireballs;
     [SerializeField] private AudioClip fireballSound;
-
+    public LayerMask easterEggLayer;
+    [SerializeField] private AudioClip mustafaSound;
 
 
 
@@ -98,6 +99,7 @@ public class Player : MonoBehaviour
 
         inventory = new Inventory();
         uiInventory.SetInventory(inventory);
+
     }
 
     // Update is called once per frame
@@ -317,6 +319,12 @@ public class Player : MonoBehaviour
     private bool isGrounded()
     {
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
+        RaycastHit2D easterEggHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, easterEggLayer);
+        if(easterEggHit.collider != null)
+        {
+            MusicSource.instance.PlaySound(mustafaSound);
+        }
+
         return raycastHit.collider != null;
     }
 
