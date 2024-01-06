@@ -16,10 +16,10 @@ WHERE IS HE???
 - [x] Açılabilen sandıklar
 - [x] Sağlık yenileyen item
 - [x] Düşman özelliklerinin item olarak kullanılabilmesi
-- [ ] Giriş bölümünün yapılışı
+- [x] Giriş bölümünün yapılışı
 - [ ] Giriş için açılış animasyonları ayarlanması
 - [ ] Visual novel tarzı konuşma balonlarının ayarlanması
-- [ ] Boss Fight
+- [x] Boss Fight
 - [ ] Oyun Giriş ve Bitiş ekranları
 - [ ] Ölünce son checkpointi yükleme & ölüm ekranı
 - [ ] Esc tuşunda durdurma menüsü
