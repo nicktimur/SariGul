@@ -38,6 +38,12 @@ public class PlayerProjectile : MonoBehaviour
             Enemy enemy = GameObject.Find(enemyName).GetComponent<Enemy>();
             enemy.TakeDamage(damage);
         }
+        else if (collision.tag == "Boss")
+        {
+            string enemyName = collision.gameObject.name;
+            BossHealth boss = GameObject.Find(enemyName).GetComponent<BossHealth>();
+            boss.TakeDamage(damage);
+        }
     }
     public void SetDirection(float _direction)
     {

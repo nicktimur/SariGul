@@ -10,6 +10,7 @@ public class PlayerCombat : MonoBehaviour
     public Transform AttackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
+    public LayerMask bossLayer;
     public int attackDamage = 20;
     private float attackRate = 2f;
 
@@ -43,9 +44,14 @@ public class PlayerCombat : MonoBehaviour
     {
         SoundManager.instance.PlaySound(AttackSound);
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, attackRange, enemyLayers);
+        Collider2D[] hitBoss = Physics2D.OverlapCircleAll(AttackPoint.position, attackRange, bossLayer);
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+        }
+        foreach (Collider2D boss in hitBoss)
+        {
+            boss.GetComponent<BossHealth>().TakeDamage(attackDamage);
         }
 
     }

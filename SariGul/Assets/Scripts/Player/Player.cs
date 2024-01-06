@@ -130,11 +130,14 @@ public class Player : MonoBehaviour
             rb.velocity = vel;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) && stamina > 0 && !noStamina && isGrounded())
+        if (Input.GetKey(KeyCode.LeftShift) && stamina > 0 && !noStamina)
         {
             if (Mathf.Abs(horizontal) > 0.1)
             {
-                animator.SetBool("isRunning", true);
+                if (isGrounded())
+                {
+                    animator.SetBool("isRunning", true);
+                }
                 speed = runningSpeed;
                 stamina -= 12 * Time.deltaTime;
                 staminaBar.setStamina(stamina);

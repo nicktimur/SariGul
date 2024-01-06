@@ -9,6 +9,7 @@ TagManager:
   - Shield
   - Chest
   - EasterEgg
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Chest
   - UnWall
   - EasterEgg
-  - 
+  - Boss
   - 
   - 
   - 

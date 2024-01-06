@@ -1,8 +1,15 @@
 fileFormatVersion: 2
-guid: a4fedccca8269874b9b98ab14e6370fb
+guid: 13b4961e9a1ae4a0298c95fc3f85d0f7
+timeCreated: 1475212298
+licenseType: Store
 NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 7400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 72935
+  packageName: 'Miniature Army 2D V.1 [Medieval Style]'
+  packageVersion: 1.0
+  assetPath: Assets/Miniature Army 2D V.1/Animation/Knight/attack.anim
+  uploadId: 202860
