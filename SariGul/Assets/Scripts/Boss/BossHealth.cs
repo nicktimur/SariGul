@@ -46,14 +46,13 @@ public class BossHealth : MonoBehaviour
 	{
         GetComponent<Animator>().SetBool("Died", true);
         SoundManager.instance.PlaySound(dieSound);
-        this.enabled = false;
-        GetComponent<Collider2D>().enabled = false;
-        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        GameObject.FindGameObjectWithTag("BossHealthBar").gameObject.SetActive(false);
 
         foreach (Behaviour component in components)
         {
             component.enabled = false;
         }
 
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
     }
 }

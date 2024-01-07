@@ -10,6 +10,7 @@ TagManager:
   - Chest
   - EasterEgg
   - Boss
+  - BossHealthBar
   layers:
   - Default
   - TransparentFX
