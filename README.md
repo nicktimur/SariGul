@@ -17,10 +17,13 @@ WHERE IS HE???
 - [x] Sağlık yenileyen item
 - [x] Düşman özelliklerinin item olarak kullanılabilmesi
 - [x] Giriş bölümünün yapılışı
-- [ ] Giriş için açılış animasyonları ayarlanması
+- [ ] Giriş için açılış cutscene'i ayarlanması
 - [ ] Visual novel tarzı konuşma balonlarının ayarlanması
 - [x] Boss Fight
-- [ ] Oyun Giriş ve Bitiş ekranları
-- [ ] Ölünce son checkpointi yükleme & ölüm ekranı
-- [ ] Esc tuşunda durdurma menüsü
+- [x] Oyun Giriş ekranı
+- [ ] Bitiş ekranı
+- [x] Ölünce ölüm ekranı
+- [x] Esc tuşunda durdurma menüsü
+- [ ] Boss Fight sahnesi
+- [ ] Boss fight giriş cutscene'i
 - <b>(Akla gelen her şey ve zamanla çıkan sorunlar buraya eklenecek)</b>
