@@ -27,4 +27,14 @@ public class MusicSource : MonoBehaviour
     {
         source.Stop();
     }
+
+    public void PauseSound()
+    {
+        source.Pause();
+    }
+
+    public void UnpauseSound()
+    {
+        source.UnPause();
+    }
 }
