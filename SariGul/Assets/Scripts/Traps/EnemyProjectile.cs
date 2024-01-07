@@ -1,6 +1,4 @@
 using Cainos.PixelArtPlatformer_VillageProps;
-using UnityEditor.AnimatedValues;
-using UnityEditor.UI;
 using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour

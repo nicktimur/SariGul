@@ -11,6 +11,9 @@ public class UIManager : MonoBehaviour
     [Header("Pause")]
     [SerializeField] private GameObject pauseScreen;
 
+    [Header("MainMenu")]
+    [SerializeField] private GameObject mainMenu;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -24,6 +27,11 @@ public class UIManager : MonoBehaviour
                 PauseGame(true);
             }
         }
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void GameOver()
