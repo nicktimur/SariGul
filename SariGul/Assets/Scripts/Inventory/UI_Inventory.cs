@@ -21,7 +21,7 @@ public class UI_Inventory : MonoBehaviour
     private void Update()
     {
         List<Item> itemList = inventory.GetItemList();
-        if (Input.GetKeyDown(KeyCode.Alpha1) && itemList != null && itemList.Count > 0)
+        if (Input.GetKeyDown(KeyCode.Alpha1) && itemList != null && itemList.Count > 0 && !player.isDead)
         {
             Item firstItem = new Item();
             firstItem = itemList[0];
@@ -29,7 +29,7 @@ public class UI_Inventory : MonoBehaviour
                 player.UseItem(firstItem);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2) && itemList != null && itemList.Count > 1)
+        if (Input.GetKeyDown(KeyCode.Alpha2) && itemList != null && itemList.Count > 1 && !player.isDead)
         {
             Item secItem = new Item();
             secItem = itemList[1];
@@ -37,7 +37,7 @@ public class UI_Inventory : MonoBehaviour
                 player.UseItem(secItem);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3) && itemList != null && itemList.Count > 2)
+        if (Input.GetKeyDown(KeyCode.Alpha3) && itemList != null && itemList.Count > 2 && !player.isDead)
         {
             Item thrdItem = new Item(); 
             thrdItem = itemList[2];
@@ -45,7 +45,7 @@ public class UI_Inventory : MonoBehaviour
                 player.UseItem(thrdItem);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha4) && itemList != null && itemList.Count > 3)
+        if (Input.GetKeyDown(KeyCode.Alpha4) && itemList != null && itemList.Count > 3 && !player.isDead)
         {
             Item frtItem = new Item(); 
             frtItem = itemList[3];

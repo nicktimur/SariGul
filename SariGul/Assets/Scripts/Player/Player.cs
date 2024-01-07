@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioClip fireballSound;
     public LayerMask easterEggLayer;
     [SerializeField] private AudioClip mustafaSound;
+    public bool gamePaused;
 
     void Start()
     {
@@ -81,127 +82,131 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cooldownTimer += Time.deltaTime;
-        horizontal = Input.GetAxis("Horizontal");
 
-        if (isGrounded())
-            animator.SetFloat("Speed", Mathf.Abs(horizontal));
+        if (!gamePaused)
+        {
 
-        //Flip player when moving left-right
-        if (horizontal > 0.01f && !isDead && !shieldOn)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
+            cooldownTimer += Time.deltaTime;
+            horizontal = Input.GetAxis("Horizontal");
 
-        else if (horizontal < -0.01f && !isDead && !shieldOn)
-        {
-            transform.localScale = Vector3.one;
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.S) && !isGrounded() || Input.GetKeyDown(KeyCode.DownArrow) && !isGrounded())
-        {
-            Vector3 vel = rb.velocity;
-            vel.y -= downPower;
-            rb.velocity = vel;
-        }
-
-        if (Input.GetKey(KeyCode.LeftShift) && stamina > 0 && !noStamina)
-        {
-            if (Mathf.Abs(horizontal) > 0.1)
-            {
-                if (isGrounded())
-                {
-                    animator.SetBool("isRunning", true);
-                }
-                speed = runningSpeed;
-                stamina -= 12 * Time.deltaTime;
-                staminaBar.setStamina(stamina);
-            }
-
-        }
-        else
-        {
-            RegenerateStamina();
-        }
-
-        if (shieldOn)
-        {
-            stamina -= 0.02f;
-            staminaBar.setStamina(stamina);
-        }
-
-        if (isGrounded() && !onWall())
-        {
-            animator.SetBool("isJumping", false);
-        }
-        else
-        {
-            animator.SetBool("isJumping", true);
-        }
-
-        //Kalkan
-        if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded() && stamina > 10)
-        {
-            shieldOn = true;
-            SoundManager.instance.PlaySound(jumpSound);
-            stamina -= 20 * Time.deltaTime;
-            staminaBar.setStamina(stamina);
-            ShieldOn();
-        }
-
-        if (Input.GetKeyUp(KeyCode.LeftControl) || stamina < 10)
-        {
-            shieldOn = false;
-            animator.SetBool("Shield", false);
-            shield.DeactivateShield();
-        }
-
-        //Zýplama
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            animator.SetBool("isJumping", true);
-            Jump();
-        }
-
-        //Ayarlanabilir Zýplama Yüksekliði
-        if (Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0 || Input.GetKeyUp(KeyCode.UpArrow) && rb.velocity.y > 0)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
-            animator.SetBool("isJumping", true);
-        }
-
-        if (onWall())
-        {
-            rb.gravityScale = 0;
-            rb.velocity = Vector2.zero;
-        }
-        else
-        {
-            rb.gravityScale = 3;
-            if (!shieldOn)
-            {
-                rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-            }
             if (isGrounded())
+                animator.SetFloat("Speed", Mathf.Abs(horizontal));
+
+            //Flip player when moving left-right
+            if (horizontal > 0.01f && !isDead && !shieldOn)
             {
-                coyoteCounter = coyoteTime;
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+
+            else if (horizontal < -0.01f && !isDead && !shieldOn)
+            {
+                transform.localScale = Vector3.one;
+
+            }
+
+            if (Input.GetKeyDown(KeyCode.S) && !isGrounded() || Input.GetKeyDown(KeyCode.DownArrow) && !isGrounded())
+            {
+                Vector3 vel = rb.velocity;
+                vel.y -= downPower;
+                rb.velocity = vel;
+            }
+
+            if (Input.GetKey(KeyCode.LeftShift) && stamina > 0 && !noStamina)
+            {
+                if (Mathf.Abs(horizontal) > 0.1)
+                {
+                    if (isGrounded())
+                    {
+                        animator.SetBool("isRunning", true);
+                    }
+                    speed = runningSpeed;
+                    stamina -= 12 * Time.deltaTime;
+                    staminaBar.setStamina(stamina);
+                }
+
             }
             else
             {
-                coyoteCounter -= Time.deltaTime;
+                RegenerateStamina();
+            }
+
+            if (shieldOn)
+            {
+                stamina -= 0.02f;
+                staminaBar.setStamina(stamina);
+            }
+
+            if (isGrounded() && !onWall())
+            {
+                animator.SetBool("isJumping", false);
+            }
+            else
+            {
+                animator.SetBool("isJumping", true);
+            }
+
+            //Kalkan
+            if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded() && stamina > 10)
+            {
+                shieldOn = true;
+                SoundManager.instance.PlaySound(jumpSound);
+                stamina -= 20 * Time.deltaTime;
+                staminaBar.setStamina(stamina);
+                ShieldOn();
+            }
+
+            if (Input.GetKeyUp(KeyCode.LeftControl) || stamina < 10)
+            {
+                shieldOn = false;
+                animator.SetBool("Shield", false);
+                shield.DeactivateShield();
+            }
+
+            //Zýplama
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                animator.SetBool("isJumping", true);
+                Jump();
+            }
+
+            //Ayarlanabilir Zýplama Yüksekliði
+            if (Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0 || Input.GetKeyUp(KeyCode.UpArrow) && rb.velocity.y > 0)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
+                animator.SetBool("isJumping", true);
+            }
+
+            if (onWall())
+            {
+                rb.gravityScale = 0;
+                rb.velocity = Vector2.zero;
+            }
+            else
+            {
+                rb.gravityScale = 3;
+                if (!shieldOn)
+                {
+                    rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+                }
+                if (isGrounded())
+                {
+                    coyoteCounter = coyoteTime;
+                }
+                else
+                {
+                    coyoteCounter -= Time.deltaTime;
+                }
+            }
+
+            //Sandýk açma
+            if (Input.GetKey(KeyCode.Z) && isGrounded() && ChestInSight())
+            {
+                chestAnimator.SetBool("IsOpened", true);
+                chestCollider.enabled = false;
+
+                inventory.AddItem(chest.GetComponent<Chest>().GetItem());
             }
         }
-
-        //Sandýk açma
-        if (Input.GetKey(KeyCode.Z) && isGrounded() && ChestInSight())
-        {
-            chestAnimator.SetBool("IsOpened", true);
-            chestCollider.enabled = false;
-
-            inventory.AddItem(chest.GetComponent<Chest>().GetItem());
-        }
-
     }
 
     private void RangedAttack()

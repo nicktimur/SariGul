@@ -13,9 +13,22 @@ public class UIManager : MonoBehaviour
 
     [Header("MainMenu")]
     [SerializeField] private GameObject mainMenu;
+    private Animator anim;
+    private Player player;
+
+    private LevelLoader levelLoader;
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+        if(SceneManager.GetActiveScene().buildIndex != 0)
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    }
 
     private void Update()
     {
+        levelLoader = FindFirstObjectByType<LevelLoader>().GetComponent<LevelLoader>();
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if(pauseScreen.activeInHierarchy)
@@ -31,7 +44,8 @@ public class UIManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        levelLoader.LoadNextLevel();
+        anim.SetTrigger("Start");
     }
 
     public void GameOver()
@@ -47,6 +61,7 @@ public class UIManager : MonoBehaviour
 
     public void MainMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 
@@ -58,15 +73,17 @@ public class UIManager : MonoBehaviour
     public void PauseGame(bool stasus)
     {
         pauseScreen.SetActive(stasus);
-        if(stasus )
+        if(stasus)
         {
             Time.timeScale = 0;
             MusicSource.instance.PauseSound();
+            player.gamePaused = true;
         }
         else
         {
             Time.timeScale = 1;
             MusicSource.instance.UnpauseSound();
+            player.gamePaused = false;
         }
     } 
 
