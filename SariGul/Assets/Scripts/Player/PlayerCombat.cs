@@ -13,9 +13,10 @@ public class PlayerCombat : MonoBehaviour
     public LayerMask bossLayer;
     public int attackDamage = 20;
     private float attackRate = 2f;
+    private UIManager uiManager;
 
     float nextAttackTime = 0f;
-    public Player player;
+    private Player player;
     public StaminaBar staminaBar;
     public HealthBar healthBar;
 
@@ -23,6 +24,12 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private AudioClip hurtSound;
     [SerializeField] private AudioClip dieSound;
     [SerializeField] private Behaviour[] components;
+
+    private void Awake()
+    {
+        player = GetComponent<Player>();
+        uiManager = FindFirstObjectByType<UIManager>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -89,6 +96,9 @@ public class PlayerCombat : MonoBehaviour
         {
             component.enabled = false;
         }
+
+        MusicSource.instance.StopSound();
+        uiManager.GameOver();
     }
 
     void OnDrawGizmosSelected()

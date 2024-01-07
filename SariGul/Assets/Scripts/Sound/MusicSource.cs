@@ -22,4 +22,9 @@ public class MusicSource : MonoBehaviour
         source.Stop();
         source.PlayOneShot(_sound);
     }
+
+    public void StopSound()
+    {
+        source.Stop();
+    }
 }

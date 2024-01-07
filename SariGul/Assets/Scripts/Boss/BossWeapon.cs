@@ -12,9 +12,25 @@ public class BossWeapon : MonoBehaviour
     public Vector3 attackOffset;
 	public float attackRange;
 	public LayerMask attackMask;
+	private Animator animator;
 
-	public void Attack()
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if (player.isDead)
+		{
+			animator.SetBool("PlayerDied", true);
+		}
+    }
+
+    public void Attack()
 	{
+		if(player.isDead) return;
+
         SoundManager.instance.PlaySound(AttackSound);
         Vector3 pos = transform.position;
 		pos += transform.right * attackOffset.x;
@@ -36,6 +52,8 @@ public class BossWeapon : MonoBehaviour
 
 	public void EnragedAttack()
 	{
+        if (player.isDead) return;
+
         SoundManager.instance.PlaySound(AttackSound);
         Vector3 pos = transform.position;
 		pos += transform.right * attackOffset.x;
