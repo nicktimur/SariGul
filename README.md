@@ -16,12 +16,14 @@ WHERE IS HE???
 - [x] Açılabilen sandıklar
 - [x] Sağlık yenileyen item
 - [x] Düşman özelliklerinin item olarak kullanılabilmesi
-- [ ] Giriş bölümünün yapılışı
-- [ ] Giriş için açılış animasyonları ayarlanması
+- [x] Giriş bölümünün yapılışı
+- [ ] Giriş için açılış cutscene'i ayarlanması
 - [ ] Visual novel tarzı konuşma balonlarının ayarlanması
-- [ ] Boss Fight
-- [ ] Oyun Giriş ve Bitiş ekranları
-- [ ] Ölünce son checkpointi yükleme & ölüm ekranı
-- [ ] Bölüm sonlarında sonraki bölüm için player verilerini kayıt alma
-- [ ] Esc tuşunda durdurma menüsü
+- [x] Boss Fight
+- [x] Oyun Giriş ekranı
+- [ ] Bitiş ekranı
+- [x] Ölünce ölüm ekranı
+- [x] Esc tuşunda durdurma menüsü
+- [ ] Boss Fight sahnesi
+- [ ] Boss fight giriş cutscene'i
 - <b>(Akla gelen her şey ve zamanla çıkan sorunlar buraya eklenecek)</b>

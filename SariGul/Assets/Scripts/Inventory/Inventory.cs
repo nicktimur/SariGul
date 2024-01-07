@@ -12,7 +12,7 @@ public class Inventory
     public Inventory() 
     { 
         itemList = new List<Item>();
-        AddItem(new Item { itemType = Item.ItemType.Fireball, amount = 10 });
+        AddItem(new Item { itemType = Item.ItemType.Fireball, amount = 20 });
     }
 
     public void AddItem(Item item)

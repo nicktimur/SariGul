@@ -63,31 +63,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject[] fireballs;
     [SerializeField] private AudioClip fireballSound;
-
-
-
-
-    private void RangedAttack()
-    {
-        if (cooldownTimer > rangedAttackCooldown)
-        {
-            inventory.RemoveItem(new Item { itemType = Item.ItemType.Fireball, amount = 1 }); ;
-            cooldownTimer = 0;
-            SoundManager.instance.PlaySound(fireballSound);
-            fireballs[FindFireball()].transform.position = firePoint.position;
-            fireballs[FindFireball()].GetComponent<PlayerProjectile>().SetDirection(Mathf.Sign(transform.localScale.x));
-        }
-    }
-    private int FindFireball()
-    {
-        for (int i = 0; i < fireballs.Length; i++)
-        {
-            if (!fireballs[i].activeInHierarchy)
-                return i;
-        }
-        return 0;
-    }
-
+    public LayerMask easterEggLayer;
+    [SerializeField] private AudioClip mustafaSound;
 
     void Start()
     {
@@ -98,6 +75,7 @@ public class Player : MonoBehaviour
 
         inventory = new Inventory();
         uiInventory.SetInventory(inventory);
+
     }
 
     // Update is called once per frame
@@ -128,11 +106,14 @@ public class Player : MonoBehaviour
             rb.velocity = vel;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) && stamina > 0 && !noStamina && isGrounded())
+        if (Input.GetKey(KeyCode.LeftShift) && stamina > 0 && !noStamina)
         {
             if (Mathf.Abs(horizontal) > 0.1)
             {
-                animator.SetBool("isRunning", true);
+                if (isGrounded())
+                {
+                    animator.SetBool("isRunning", true);
+                }
                 speed = runningSpeed;
                 stamina -= 12 * Time.deltaTime;
                 staminaBar.setStamina(stamina);
@@ -223,6 +204,27 @@ public class Player : MonoBehaviour
 
     }
 
+    private void RangedAttack()
+    {
+        if (cooldownTimer > rangedAttackCooldown)
+        {
+            inventory.RemoveItem(new Item { itemType = Item.ItemType.Fireball, amount = 1 }); ;
+            cooldownTimer = 0;
+            SoundManager.instance.PlaySound(fireballSound);
+            fireballs[FindFireball()].transform.position = firePoint.position;
+            fireballs[FindFireball()].GetComponent<PlayerProjectile>().SetDirection(Mathf.Sign(transform.localScale.x));
+        }
+    }
+    private int FindFireball()
+    {
+        for (int i = 0; i < fireballs.Length; i++)
+        {
+            if (!fireballs[i].activeInHierarchy)
+                return i;
+        }
+        return 0;
+    }
+
     public void UseItem(Item item)
     {
         switch (item.itemType)
@@ -311,12 +313,15 @@ public class Player : MonoBehaviour
         rb.velocity = Vector2.zero;
     }
 
-
-
-
     private bool isGrounded()
     {
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
+        RaycastHit2D easterEggHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, easterEggLayer);
+        if(easterEggHit.collider != null)
+        {
+            MusicSource.instance.PlaySound(mustafaSound);
+        }
+
         return raycastHit.collider != null;
     }
 
@@ -336,7 +341,6 @@ public class Player : MonoBehaviour
             new Vector3(boxCollider.bounds.size.x * chestRange, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
 
     }
-
 
     private void RegenerateStamina()
     {
