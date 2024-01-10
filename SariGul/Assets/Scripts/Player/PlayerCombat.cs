@@ -18,7 +18,7 @@ public class PlayerCombat : MonoBehaviour
     float nextAttackTime = 0f;
     private Player player;
     public StaminaBar staminaBar;
-    public HealthBar healthBar;
+    public PlayerHealthBar healthBar;
 
     [SerializeField] private AudioClip AttackSound;
     [SerializeField] private AudioClip hurtSound;
@@ -40,7 +40,9 @@ public class PlayerCombat : MonoBehaviour
             {
                 anime.SetTrigger("Attacking");
                 player.stamina -= 30;
-                staminaBar.setStamina(player.stamina);
+                if (player.stamina <= 0)
+                    player.stamina = 0;
+                staminaBar.setStamina(player.stamina, player.maxStamina);
                 nextAttackTime = Time.time + 1f / attackRate;
             }
         }
@@ -68,7 +70,7 @@ public class PlayerCombat : MonoBehaviour
         SoundManager.instance.PlaySound(hurtSound);
         player.health -= damage;
         anime.SetTrigger("Hurt");
-        healthBar.setHealth(player.health);
+        healthBar.setHealth(player.health, player.maxHealth);
         if(player.health <= 0)
         {
             KillPlayer();
@@ -79,7 +81,9 @@ public class PlayerCombat : MonoBehaviour
     {
         TakeDamage(damage);
         player.stamina -= damage * 5;
-        staminaBar.setStamina(player.stamina);
+        if(player.stamina <= 0)
+            player.stamina = 0;
+        staminaBar.setStamina(player.stamina, player.maxStamina);
     }
 
     void KillPlayer()
