@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     Animator animator;
     public StaminaBar staminaBar;
-    public HealthBar healthBar;
+    public PlayerHealthBar healthBar;
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
     [SerializeField] private UI_Inventory uiInventory;
     [SerializeField] private float rangedAttackCooldown;
     [SerializeField] private Animator heartAnimator;
+    [SerializeField] private Animator canvasAnimator;
 
     private Inventory inventory;
     private GameObject chest;
@@ -82,6 +83,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(health <= 20)
+        {
+            canvasAnimator.SetBool("InDanger", true);
+        }
+        else
+        {
+            canvasAnimator.SetBool("InDanger", false);
+        }
 
         if (!gamePaused)
         {
@@ -121,7 +131,7 @@ public class Player : MonoBehaviour
                     }
                     speed = runningSpeed;
                     stamina -= 12 * Time.deltaTime;
-                    staminaBar.setStamina(stamina);
+                    staminaBar.setStamina(stamina, maxStamina);
                 }
 
             }
@@ -133,7 +143,7 @@ public class Player : MonoBehaviour
             if (shieldOn)
             {
                 stamina -= 0.02f;
-                staminaBar.setStamina(stamina);
+                staminaBar.setStamina(stamina, maxStamina);
             }
 
             if (isGrounded() && !onWall())
@@ -151,7 +161,7 @@ public class Player : MonoBehaviour
                 shieldOn = true;
                 SoundManager.instance.PlaySound(jumpSound);
                 stamina -= 20 * Time.deltaTime;
-                staminaBar.setStamina(stamina);
+                staminaBar.setStamina(stamina, maxStamina);
                 ShieldOn();
             }
 
@@ -236,8 +246,10 @@ public class Player : MonoBehaviour
         {
             case Item.ItemType.HealthPotion:
                 health += 25;
-                if (health > 100) health = 100;
-                healthBar.setHealth(health);
+                maxHealth += 25;
+                if (health > maxHealth) health = maxHealth;
+                healthBar.setMaxHealth(maxHealth);
+                healthBar.setHealth(health, maxHealth);
                 heartAnimator.SetTrigger("Heal");
                 inventory.RemoveItem(new Item { itemType = Item.ItemType.HealthPotion, amount = 1 });
                 break;
@@ -308,7 +320,7 @@ public class Player : MonoBehaviour
         stamina -= damage * 3;
         if (stamina < 0)
             stamina = 0;
-        staminaBar.setStamina(stamina);
+        staminaBar.setStamina(stamina, maxStamina);
     }
 
     private void ShieldOn()
@@ -357,7 +369,7 @@ public class Player : MonoBehaviour
             if (stamina < 100)
             {
                 stamina += 10 * Time.deltaTime;
-                staminaBar.setStamina(stamina);
+                staminaBar.setStamina(stamina, maxStamina);
                 if (stamina > 10)
                 {
                     noStamina = false;
@@ -370,7 +382,7 @@ public class Player : MonoBehaviour
             else
             {
                 stamina = 100;
-                staminaBar.setStamina(stamina);
+                staminaBar.setStamina(stamina, maxStamina);
             }
         }
     }
