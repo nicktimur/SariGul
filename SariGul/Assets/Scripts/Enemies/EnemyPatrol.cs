@@ -25,8 +25,7 @@ public class EnemyPatrol : MonoBehaviour
     [Header("Enemy Animator")]
     [SerializeField] private Animator anime;
 
-    [Header("Player")]
-    [SerializeField] private Player player;
+    private Player player;
 
     [Header("HealthBar")]
     [SerializeField] private Transform bar;
@@ -34,6 +33,7 @@ public class EnemyPatrol : MonoBehaviour
     private void Awake()
     {
         initScale = enemy.localScale;
+        player = GameObject.Find("PlayerKnight").GetComponent<Player>(); 
     }
 
     private void OnDisable()

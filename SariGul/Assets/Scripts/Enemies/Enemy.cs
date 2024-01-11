@@ -23,10 +23,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] public LayerMask playerLayer;
     public int maxHealth = 100;
     int currentHealth;
-    public Animator anime;
+    private Animator anime;
     public HealthBar healthBar;
-    public PlayerCombat playerCombat;
-    public Player player;
+    private PlayerCombat playerCombat;
+    private Player player;
     public string enemyType;
     [SerializeField] private EnemyPatrol enemyPatrol;
     public CloseEnemy closeEnemy;
@@ -43,6 +43,8 @@ public class Enemy : MonoBehaviour
     {
         anime = GetComponent<Animator>();
         enemyPatrol = GetComponentInParent<EnemyPatrol>();
+        player = GameObject.Find("PlayerKnight").GetComponent<Player>();
+        playerCombat = GameObject.Find("PlayerKnight").GetComponent<PlayerCombat>();
     }
 
     // Start is called before the first frame update
