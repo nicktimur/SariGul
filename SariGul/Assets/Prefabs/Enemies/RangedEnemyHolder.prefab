@@ -56,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -195,10 +195,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b7c1c07c658c94e9b5d4823be076f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
-  playerCombat: {fileID: 0}
+  rangeType: 
   speed: 6
   resetTime: 5
+  enemy: {fileID: 0}
 --- !u!1 &349601138744992112
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +286,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -425,10 +425,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b7c1c07c658c94e9b5d4823be076f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
-  playerCombat: {fileID: 0}
+  rangeType: 
   speed: 6
   resetTime: 5
+  enemy: {fileID: 0}
 --- !u!1 &1943585429424032268
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,7 +628,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -767,10 +767,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b7c1c07c658c94e9b5d4823be076f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
-  playerCombat: {fileID: 0}
+  rangeType: 
   speed: 6
   resetTime: 5
+  enemy: {fileID: 0}
 --- !u!1 &2447372270214012084
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,7 +827,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -966,10 +966,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b7c1c07c658c94e9b5d4823be076f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
-  playerCombat: {fileID: 0}
+  rangeType: 
   speed: 6
   resetTime: 5
+  enemy: {fileID: 0}
 --- !u!1 &2957178272563926935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,7 +1026,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1165,10 +1165,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b7c1c07c658c94e9b5d4823be076f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
-  playerCombat: {fileID: 0}
+  rangeType: 
   speed: 6
   resetTime: 5
+  enemy: {fileID: 0}
 --- !u!1 &2960101253976360307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1300,7 +1300,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1439,10 +1439,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b7c1c07c658c94e9b5d4823be076f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
-  playerCombat: {fileID: 0}
+  rangeType: 
   speed: 6
   resetTime: 5
+  enemy: {fileID: 0}
 --- !u!1 &5730669868586894293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1574,7 +1574,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1713,10 +1713,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b7c1c07c658c94e9b5d4823be076f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
-  playerCombat: {fileID: 0}
+  rangeType: 
   speed: 6
   resetTime: 5
+  enemy: {fileID: 0}
 --- !u!1 &6207658051162229403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1923,7 +1923,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2062,10 +2062,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b7c1c07c658c94e9b5d4823be076f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
-  playerCombat: {fileID: 0}
+  rangeType: 
   speed: 6
   resetTime: 5
+  enemy: {fileID: 0}
 --- !u!1 &7747242830549064107
 GameObject:
   m_ObjectHideFlags: 0
@@ -2122,7 +2122,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2261,10 +2261,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b7c1c07c658c94e9b5d4823be076f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
-  playerCombat: {fileID: 0}
+  rangeType: 
   speed: 6
   resetTime: 5
+  enemy: {fileID: 0}
 --- !u!1 &7752373895879607266
 GameObject:
   m_ObjectHideFlags: 0
@@ -2321,7 +2321,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2460,10 +2460,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b7c1c07c658c94e9b5d4823be076f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
-  playerCombat: {fileID: 0}
+  rangeType: 
   speed: 6
   resetTime: 5
+  enemy: {fileID: 0}
 --- !u!1 &8488528419107769911
 GameObject:
   m_ObjectHideFlags: 0
@@ -2632,7 +2632,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2822,6 +2822,10 @@ MonoBehaviour:
   enemyPatrol: {fileID: 0}
   closeEnemy: {fileID: 0}
   rangedEnemy: {fileID: 8633978320593988353}
+  hurtSound: {fileID: 0}
+  AttackSound: {fileID: 0}
+  AttackPoint: {fileID: 0}
+  attackRange: 0.5
 --- !u!114 &8633978320593988353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2850,6 +2854,8 @@ MonoBehaviour:
   - {fileID: 7930599470188081344}
   - {fileID: 0}
   enemy: {fileID: 7930599470188081344}
+  fireballSound: {fileID: 0}
+  dieSound: {fileID: 0}
 --- !u!1 &9050777840895358807
 GameObject:
   m_ObjectHideFlags: 0
@@ -2902,7 +2908,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2987,7 +2993,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3071,7 +3077,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3155,7 +3161,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3244,7 +3250,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3328,7 +3334,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
