@@ -8,6 +8,8 @@ public class Firetrap : MonoBehaviour
     [Header("Firetrap Timers")]
     [SerializeField] private float activationDelay;
     [SerializeField] private float activeTime;
+    public float cooldownTimer = Mathf.Infinity;
+    [SerializeField] private float attackCooldown;
     private Animator anim;
     private SpriteRenderer spriteRend;
 
@@ -25,6 +27,7 @@ public class Firetrap : MonoBehaviour
 
     private void Update()
     {
+        cooldownTimer += Time.deltaTime;
         if (playerCombat != null && active)
             playerCombat.TakeDamage(damage);
     }
@@ -38,8 +41,12 @@ public class Firetrap : MonoBehaviour
             if (!triggered)
                 StartCoroutine(ActivateFiretrap());
 
-            if (active)
+            if (active && cooldownTimer >= attackCooldown)
+            {
                 collision.GetComponent<PlayerCombat>().TakeDamage(damage);
+                cooldownTimer = 0;
+            }
+
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

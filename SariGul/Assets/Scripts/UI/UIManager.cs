@@ -23,14 +23,16 @@ public class UIManager : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         if(SceneManager.GetActiveScene().buildIndex != 0)
+        {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            cameraTransform = GameObject.Find("Main Camera").transform;
+        }
 
-        cameraTransform = GameObject.Find("Main Camera").transform;
     }
 
     private void Update()
     {
-        levelLoader = FindFirstObjectByType<LevelLoader>().GetComponent<LevelLoader>();
+        levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
