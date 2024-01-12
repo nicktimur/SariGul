@@ -17,12 +17,15 @@ public class UIManager : MonoBehaviour
     private Player player;
 
     private LevelLoader levelLoader;
+    private Transform cameraTransform;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         if(SceneManager.GetActiveScene().buildIndex != 0)
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+
+        cameraTransform = GameObject.Find("Main Camera").transform;
     }
 
     private void Update()
@@ -54,8 +57,19 @@ public class UIManager : MonoBehaviour
         SoundManager.instance.PlaySound(gameOverSound);
     }
 
+    public void GameOn()
+    {
+        gameOverScreen.SetActive(false);
+    }
+
     public void Restart()
     {
+        if(SceneManager.GetActiveScene().buildIndex > 1)
+        {
+            player.transform.position = new Vector3(20.65637f, 4.800001f, 0.1985453f);
+            cameraTransform.position = new Vector3(21.71f, 8.9f, -5);
+            player.GetComponent<PlayerCombat>().RevivePlayer();
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -63,6 +77,10 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
+        Destroy(GameObject.Find("Canvas"));
+        Destroy(GameObject.Find("Player"));
+        Destroy(GameObject.Find("Main Camera"));
+        Destroy(GameObject.Find("LevelLoader"));
     }
 
     public void Quit()

@@ -105,6 +105,25 @@ public class PlayerCombat : MonoBehaviour
         uiManager.GameOver();
     }
 
+    public void RevivePlayer()
+    {
+        player.health = player.maxHealth;
+        player.healthBar.setHealth(player.health, player.maxHealth);
+        player.isDead = false;
+        player.animator.SetBool("Died", false);
+
+        this.enabled = true;
+        GetComponent<Collider2D>().enabled = true;
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+
+        foreach (Behaviour component in components)
+        {
+            component.enabled = true;
+        }
+
+        uiManager.GameOn();
+    }
+
     void OnDrawGizmosSelected()
     {
         if (AttackPoint == null)
