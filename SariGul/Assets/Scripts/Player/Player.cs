@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
-    Animator animator;
+    public Animator animator;
     public StaminaBar staminaBar;
     public PlayerHealthBar healthBar;
     [SerializeField] private BoxCollider2D boxCollider;

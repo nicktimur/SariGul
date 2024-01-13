@@ -5,11 +5,15 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
 
-	public Transform player;
+	private Transform player;
 
 	public bool isFlipped = false;
 
-	public void LookAtPlayer()
+    private void Start()
+    {
+        player = GameObject.Find("PlayerKnight").GetComponent<Transform>();
+    }
+    public void LookAtPlayer()
 	{
 		Vector3 flipped = transform.localScale;
 		flipped.z *= -1f;

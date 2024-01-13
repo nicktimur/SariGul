@@ -8,7 +8,7 @@ public class BossHealth : MonoBehaviour
 	public int health = 500;
 
 	public GameObject deathEffect;
-	public HealthBar healthBar;
+	private HealthBar healthBar;
     [SerializeField] private AudioClip hurtSound;
     [SerializeField] private Behaviour[] components;
     [SerializeField] private AudioClip dieSound;
@@ -17,7 +17,12 @@ public class BossHealth : MonoBehaviour
 
     private void Start()
     {
-		healthBar.setMaxHealth(health);
+
+        healthBar = GameObject.Find("BossHealthBar").GetComponent<HealthBar>();
+        GameObject.Find("BossHealthBar").GetComponent<CanvasGroup>().alpha = 1;
+
+
+        healthBar.setMaxHealth(health);
     }
 
     public void TakeDamage(int damage)

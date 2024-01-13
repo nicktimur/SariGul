@@ -61,6 +61,8 @@ public class EnemyProjectile : MonoBehaviour
             playerCombat.TakeDamage(damage);
         else if (collision.tag == "Player" && rangeType == "ptn")
             playerCombat.TakeStaminaDamage(damage);
+        else if (collision.tag == "Player")
+            playerCombat.TakeDamage(damage);
         else if (collision.tag == "Shield")
             player.ShieldTakeDamage(damage);
         else if( collision.tag == "Enemy")

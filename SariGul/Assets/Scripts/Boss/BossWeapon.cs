@@ -6,7 +6,7 @@ public class BossWeapon : MonoBehaviour
 {
 	public int attackDamage = 20;
 	public int enragedAttackDamage = 40;
-	public Player player;
+	private Player player;
     [SerializeField] private AudioClip AttackSound;
 
     public Vector3 attackOffset;
@@ -17,6 +17,7 @@ public class BossWeapon : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+		player = GameObject.Find("PlayerKnight").GetComponent<Player>();
     }
 
     private void Update()
