@@ -28,8 +28,11 @@ public class Firetrap : MonoBehaviour
     private void Update()
     {
         cooldownTimer += Time.deltaTime;
-        if (playerCombat != null && active)
+        if (playerCombat != null && active && cooldownTimer >= attackCooldown) 
+        { 
             playerCombat.TakeDamage(damage);
+            cooldownTimer = 0;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
