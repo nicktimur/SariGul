@@ -24,6 +24,6 @@ WHERE IS HE???
 - [ ] Bitiş ekranı
 - [x] Ölünce ölüm ekranı
 - [x] Esc tuşunda durdurma menüsü
-- [ ] Boss Fight sahnesi
-- [ ] Boss fight giriş cutscene'i
+- [x] Boss Fight sahnesi
+- [x] Boss fight giriş cutscene'i
 - <b>(Akla gelen her şey ve zamanla çıkan sorunlar buraya eklenecek)</b>
