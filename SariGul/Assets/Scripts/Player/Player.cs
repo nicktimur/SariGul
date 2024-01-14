@@ -333,7 +333,7 @@ public class Player : MonoBehaviour
 
     public void ShieldTakeDamage(int damage)
     {
-        stamina -= damage * 3;
+        stamina -= damage;
         if (stamina < 0)
             stamina = 0;
         staminaBar.setStamina(stamina, maxStamina);
