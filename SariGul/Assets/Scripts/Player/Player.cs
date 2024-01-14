@@ -229,6 +229,14 @@ public class Player : MonoBehaviour
         gamePaused = false;
     }
 
+    public void AddMaxHealth(int extraHealth)
+    {
+        maxHealth += extraHealth;
+        health += extraHealth;
+        healthBar.setMaxHealth(maxHealth);
+        healthBar.setHealth(health, maxHealth);
+    }
+
     private void RangedAttack()
     {
         if (cooldownTimer > rangedAttackCooldown)
@@ -255,10 +263,8 @@ public class Player : MonoBehaviour
         switch (item.itemType)
         {
             case Item.ItemType.HealthPotion:
-                health += 30;
-                maxHealth += 20;
+                health += 25;
                 if (health > maxHealth) health = maxHealth;
-                healthBar.setMaxHealth(maxHealth);
                 healthBar.setHealth(health, maxHealth);
                 heartAnimator.SetTrigger("Heal");
                 inventory.RemoveItem(new Item { itemType = Item.ItemType.HealthPotion, amount = 1 });
