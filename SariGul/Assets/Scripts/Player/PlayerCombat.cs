@@ -111,6 +111,7 @@ public class PlayerCombat : MonoBehaviour
         player.healthBar.setHealth(player.health, player.maxHealth);
         player.isDead = false;
         player.animator.SetBool("Died", false);
+        GameObject.Find("BossHealthBar").GetComponent<CanvasGroup>().alpha = 0;
 
         this.enabled = true;
         GetComponent<Collider2D>().enabled = true;
