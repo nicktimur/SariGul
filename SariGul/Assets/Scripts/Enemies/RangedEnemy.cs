@@ -14,6 +14,12 @@ public class RangedEnemy : MonoBehaviour
     [SerializeField]
     private AudioClip fireballSound;
     [SerializeField] private AudioClip dieSound;
+    private Player player;
+
+    private void Awake()
+    {
+        player = GameObject.Find("PlayerKnight").GetComponent<Player>();
+    }
 
 
     private void RangedAttack()
@@ -41,6 +47,7 @@ public class RangedEnemy : MonoBehaviour
         this.enabled = false;
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        player.AddMaxHealth(20);
 
         foreach (Behaviour component in components)
         {

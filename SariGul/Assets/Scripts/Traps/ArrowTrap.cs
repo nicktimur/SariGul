@@ -14,7 +14,7 @@ public class ArrowTrap : MonoBehaviour
 
         arrows[FindArrow()].transform.position = firePoint.position;
         arrows[FindArrow()].GetComponent<TrapProjectile>().ActivateProjectile();
-        SoundManager.instance.PlaySound(arrowSound);
+        WarSound.instance.PlaySound(arrowSound);
     }
     private int FindArrow()
     {

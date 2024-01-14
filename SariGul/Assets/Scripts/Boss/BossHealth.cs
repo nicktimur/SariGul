@@ -12,6 +12,7 @@ public class BossHealth : MonoBehaviour
     [SerializeField] private AudioClip hurtSound;
     [SerializeField] private Behaviour[] components;
     [SerializeField] private AudioClip dieSound;
+    private LevelLoader levelLoader;
 
     public bool isInvulnerable = false;
 
@@ -34,7 +35,7 @@ public class BossHealth : MonoBehaviour
         health -= damage;
 		healthBar.setHealth(health);
 
-		if (health <= 200)
+		if (health <= 500)
 		{
 			GetComponent<Animator>().SetBool("IsEnraged", true);
 			this.GetComponent<BossWeapon>().attackRange = 2f;
@@ -52,6 +53,19 @@ public class BossHealth : MonoBehaviour
         GetComponent<Animator>().SetBool("Died", true);
         SoundManager.instance.PlaySound(dieSound);
         GameObject.FindGameObjectWithTag("BossHealthBar").gameObject.SetActive(false);
+
+        levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
+        levelLoader.LoadNextLevel();
+
+        Destroy(GameObject.Find("Player"));
+        Destroy(GameObject.Find("Main Camera"));
+        Destroy(GameObject.Find("StaminaBar"));
+        Destroy(GameObject.Find("HealthBar"));
+        Destroy(GameObject.Find("Inventory"));
+        Destroy(GameObject.Find("BossHealthBar"));
+        Destroy(GameObject.Find("GameOverScreen"));
+        Destroy(GameObject.Find("PauseScreen"));
+        Destroy(GameObject.Find("Danger"));
 
         foreach (Behaviour component in components)
         {
