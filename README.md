@@ -21,7 +21,7 @@ WHERE IS HE???
 - [ ] Visual novel tarzı konuşma balonlarının ayarlanması
 - [x] Boss Fight
 - [x] Oyun Giriş ekranı
-- [ ] Bitiş ekranı
+- [x] Bitiş ekranı
 - [x] Ölünce ölüm ekranı
 - [x] Esc tuşunda durdurma menüsü
 - [x] Boss Fight sahnesi
