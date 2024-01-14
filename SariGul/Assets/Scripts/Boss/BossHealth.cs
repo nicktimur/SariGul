@@ -35,7 +35,7 @@ public class BossHealth : MonoBehaviour
         health -= damage;
 		healthBar.setHealth(health);
 
-		if (health <= 200)
+		if (health <= 500)
 		{
 			GetComponent<Animator>().SetBool("IsEnraged", true);
 			this.GetComponent<BossWeapon>().attackRange = 2f;
