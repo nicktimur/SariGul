@@ -6,12 +6,15 @@ public class Boss : MonoBehaviour
 {
 
 	private Transform player;
+	private Player playerScript;
 
 	public bool isFlipped = false;
 
     private void Start()
     {
-        player = GameObject.Find("PlayerKnight").GetComponent<Transform>();
+		GameObject playerObject = GameObject.Find("PlayerKnight");
+        player = playerObject.GetComponent<Transform>();
+		playerScript = playerObject.GetComponent<Player>();
     }
     public void LookAtPlayer()
 	{
@@ -30,6 +33,16 @@ public class Boss : MonoBehaviour
 			transform.Rotate(0f, 180f, 0f);
 			isFlipped = true;
 		}
+	}
+
+	public void DisablePlayer()
+	{
+		playerScript.DisableControls();
+	}
+
+	public void EnablePlayer()
+	{
+		playerScript.EnableControls();
 	}
 
 }

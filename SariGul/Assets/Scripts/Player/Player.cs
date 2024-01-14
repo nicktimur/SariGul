@@ -219,6 +219,16 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void DisableControls()
+    {
+        gamePaused = true;
+    }
+
+    public void EnableControls()
+    {
+        gamePaused = false;
+    }
+
     private void RangedAttack()
     {
         if (cooldownTimer > rangedAttackCooldown)
@@ -245,8 +255,8 @@ public class Player : MonoBehaviour
         switch (item.itemType)
         {
             case Item.ItemType.HealthPotion:
-                health += 25;
-                maxHealth += 25;
+                health += 30;
+                maxHealth += 20;
                 if (health > maxHealth) health = maxHealth;
                 healthBar.setMaxHealth(maxHealth);
                 healthBar.setHealth(health, maxHealth);
