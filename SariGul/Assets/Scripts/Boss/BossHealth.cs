@@ -57,9 +57,15 @@ public class BossHealth : MonoBehaviour
         levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
         levelLoader.LoadNextLevel();
 
-        Destroy(GameObject.Find("Canvas"));
         Destroy(GameObject.Find("Player"));
         Destroy(GameObject.Find("Main Camera"));
+        Destroy(GameObject.Find("StaminaBar"));
+        Destroy(GameObject.Find("HealthBar"));
+        Destroy(GameObject.Find("Inventory"));
+        Destroy(GameObject.Find("BossHealthBar"));
+        Destroy(GameObject.Find("GameOverScreen"));
+        Destroy(GameObject.Find("PauseScreen"));
+        Destroy(GameObject.Find("Danger"));
 
         foreach (Behaviour component in components)
         {
