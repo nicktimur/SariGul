@@ -5,6 +5,7 @@ public class ArrowTrap : MonoBehaviour
     [SerializeField] private float attackCooldown;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject[] arrows;
+    [SerializeField] private AudioClip arrowSound;
     private float cooldownTimer;
 
     private void Attack()
@@ -13,6 +14,7 @@ public class ArrowTrap : MonoBehaviour
 
         arrows[FindArrow()].transform.position = firePoint.position;
         arrows[FindArrow()].GetComponent<TrapProjectile>().ActivateProjectile();
+        SoundManager.instance.PlaySound(arrowSound);
     }
     private int FindArrow()
     {

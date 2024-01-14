@@ -294,7 +294,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19386683611c4dd47940d068325208d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   isFlipped: 0
 --- !u!114 &1843115111935125872
 MonoBehaviour:
@@ -310,7 +309,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 500
   deathEffect: {fileID: 0}
-  healthBar: {fileID: 0}
   hurtSound: {fileID: 8300000, guid: 7717033e21d64eb45a466baeb7627ef8, type: 3}
   components:
   - {fileID: 1367218501274342236}
@@ -330,7 +328,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 10
   enragedAttackDamage: 30
-  player: {fileID: 0}
   AttackSound: {fileID: 8300000, guid: 9a639b0d453eecc4686204fe76af96e3, type: 3}
   attackOffset: {x: 0, y: 0.3, z: 0}
   attackRange: 1.3

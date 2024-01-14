@@ -219,6 +219,16 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void DisableControls()
+    {
+        gamePaused = true;
+    }
+
+    public void EnableControls()
+    {
+        gamePaused = false;
+    }
+
     private void RangedAttack()
     {
         if (cooldownTimer > rangedAttackCooldown)
