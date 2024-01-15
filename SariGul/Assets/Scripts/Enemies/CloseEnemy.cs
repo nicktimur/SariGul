@@ -21,6 +21,7 @@ public class CloseEnemy : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         player.AddMaxHealth(10);
+        player.AddMaxStamina(5);
 
         foreach (Behaviour component in components)
         {
