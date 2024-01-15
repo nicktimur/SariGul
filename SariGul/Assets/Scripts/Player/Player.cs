@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
     [SerializeField] private UI_Inventory uiInventory;
     [SerializeField] private float rangedAttackCooldown;
     [SerializeField] private Animator heartAnimator;
+    [SerializeField] private Animator shieldAnimator;
     [SerializeField] private Animator canvasAnimator;
 
     private Inventory inventory;
@@ -64,6 +65,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject[] fireballs;
     [SerializeField] private AudioClip fireballSound;
+    [SerializeField] private AudioClip shieldSound;
     public LayerMask easterEggLayer;
     [SerializeField] private AudioClip mustafaSound;
     public bool gamePaused;
@@ -237,6 +239,14 @@ public class Player : MonoBehaviour
         healthBar.setHealth(health, maxHealth);
     }
 
+    public void AddMaxStamina(int extraStamina)
+    {
+        maxStamina += extraStamina;
+        stamina += extraStamina;
+        staminaBar.setMaxStamina(maxStamina);
+        staminaBar.setStamina(stamina, maxStamina);
+    }
+
     private void RangedAttack()
     {
         if (cooldownTimer > rangedAttackCooldown)
@@ -333,6 +343,8 @@ public class Player : MonoBehaviour
 
     public void ShieldTakeDamage(int damage)
     {
+        shieldAnimator.SetTrigger("shield");
+        SoundManager.instance.PlaySound(shieldSound);
         stamina -= damage;
         if (stamina < 0)
             stamina = 0;
@@ -382,7 +394,7 @@ public class Player : MonoBehaviour
         speed = walkingSpeed;
         if (!shieldOn)
         {
-            if (stamina < 100)
+            if (stamina < maxStamina)
             {
                 stamina += 10 * Time.deltaTime;
                 staminaBar.setStamina(stamina, maxStamina);
@@ -397,7 +409,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                stamina = 100;
+                stamina = maxStamina;
                 staminaBar.setStamina(stamina, maxStamina);
             }
         }

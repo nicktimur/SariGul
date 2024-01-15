@@ -48,6 +48,7 @@ public class RangedEnemy : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         player.AddMaxHealth(20);
+        player.AddMaxStamina(10);
 
         foreach (Behaviour component in components)
         {
