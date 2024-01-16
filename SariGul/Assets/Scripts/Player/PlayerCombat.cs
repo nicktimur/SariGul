@@ -36,10 +36,10 @@ public class PlayerCombat : MonoBehaviour
     {
         if(Time.time >= nextAttackTime)
         {
-            if (Input.GetMouseButtonDown(0) && player.stamina > 0 && !player.shieldOn)
+            if (Input.GetMouseButtonDown(0) && player.stamina > 10 && !player.shieldOn)
             {
                 anime.SetTrigger("Attacking");
-                player.stamina -= 30;
+                player.stamina -= 20;
                 if (player.stamina <= 0)
                     player.stamina = 0;
                 staminaBar.setStamina(player.stamina, player.maxStamina);
