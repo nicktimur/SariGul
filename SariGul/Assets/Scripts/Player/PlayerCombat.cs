@@ -108,7 +108,9 @@ public class PlayerCombat : MonoBehaviour
     public void RevivePlayer()
     {
         player.health = player.maxHealth;
+        player.stamina = player.maxStamina;
         player.healthBar.setHealth(player.health, player.maxHealth);
+        player.staminaBar.setStamina(player.stamina, player.maxStamina);
         player.isDead = false;
         player.animator.SetBool("Died", false);
         GameObject.Find("BossHealthBar").GetComponent<CanvasGroup>().alpha = 0;
