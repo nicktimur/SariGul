@@ -244,6 +244,7 @@ public class Player : MonoBehaviour
     {
         maxStamina += extraStamina;
         stamina += extraStamina;
+        staminaSpeed += extraStamina / 10;
         staminaBar.setMaxStamina(maxStamina);
         staminaBar.setStamina(stamina, maxStamina);
     }
