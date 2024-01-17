@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ChandelierFrame (2)_0: 350383772046054455
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

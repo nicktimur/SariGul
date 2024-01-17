@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      GoldenChest (1)_0: 2299621333319582646
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
