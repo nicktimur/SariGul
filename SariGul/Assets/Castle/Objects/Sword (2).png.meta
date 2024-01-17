@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Sword (2)_0: -4062385016450194309
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

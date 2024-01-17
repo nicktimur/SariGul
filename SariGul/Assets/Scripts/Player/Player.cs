@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     bool noStamina = false;
     public float maxStamina = 100;
     public float stamina;
+    private float staminaSpeed = 10;
 
     public int maxHealth = 100;
     public int health;
@@ -396,7 +397,7 @@ public class Player : MonoBehaviour
         {
             if (stamina < maxStamina)
             {
-                stamina += 10 * Time.deltaTime;
+                stamina += staminaSpeed * Time.deltaTime;
                 staminaBar.setStamina(stamina, maxStamina);
                 if (stamina > 10)
                 {

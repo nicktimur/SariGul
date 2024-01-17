@@ -152,7 +152,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      kalkan_0: -6657596594707830934
+      kalkan_1: -4483420435042465066
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -7,8 +7,10 @@ public class Boss : MonoBehaviour
 
 	private Transform player;
 	private Player playerScript;
+	public Vector3 flipped;
 
-	public bool isFlipped = false;
+
+    public bool isFlipped = false;
 
     private void Start()
     {
@@ -18,7 +20,7 @@ public class Boss : MonoBehaviour
     }
     public void LookAtPlayer()
 	{
-		Vector3 flipped = transform.localScale;
+		flipped = transform.localScale;
 		flipped.z *= -1f;
 
 		if (transform.position.x > player.position.x && isFlipped)

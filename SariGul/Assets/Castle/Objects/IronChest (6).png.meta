@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      IronChest (6)_0: 3136226453621818537
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
